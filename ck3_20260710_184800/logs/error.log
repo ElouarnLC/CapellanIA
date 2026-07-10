@@ -1,0 +1,3 @@
+[18:48:01][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: situation_group, near line: 5" in file: "common/situation/situations/capellania_situations.txt" near line: 5
+[18:48:02][E][decision_type.cpp:241]: Decision picture capellania_found_chapel missing entries
+[18:48:02][E][decision_type.cpp:241]: Decision picture capellania_open_chapel missing entries

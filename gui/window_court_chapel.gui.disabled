@@ -1,0 +1,378 @@
+﻿# CapellanIA: GUI Layout for Window Court Chapel
+# Visualizes Wireframe A (Dashboard) and Wireframe C (Decoration screen)
+
+window = {
+	name = "window_court_chapel"
+	parentanchor = center
+	size = { 1050 720 }
+	layer = middle
+	visible = "[And( GetPlayer.IsValid, GetScriptedGui('capellania_open_window').IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) )]"
+	
+	using = Window_Background
+	using = Window_Decoration_Spiky
+	
+	vbox = {
+		using = Window_Margins
+		
+		# Header Panel
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+			blockoverride "header_text" {
+				text = "CAPELLANIA_WINDOW_TITLE"
+			}
+			blockoverride "button_close" {
+				onclick = "[GetScriptedGui('capellania_close_window').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+			}
+		}
+		
+		# Main Workspace
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			spacing = 15
+			
+			# LEFT PANEL: Wireframe A Layout & 2D Image Slots (Width: 620)
+			vbox = {
+				layoutpolicy_vertical = expanding
+				size = { 640 600 }
+				spacing = 10
+				
+				# 2D Bounding Box Graphic Frame
+				widget = {
+					name = "chapel_2d_scene"
+					size = { 640 460 }
+					
+					# Background Canvas Illustration
+					background = {
+						texture = "gfx/interface/illustrations/chapelle_loire_fond.dds"
+					}
+					
+					# Clickable 2D Bounding-Box Slots
+					# 1. VITRAUX (Stained Glass) Bounding Box
+					button = {
+						name = "slot_vitraux"
+						position = { 180 60 }
+						size = { 280 110 }
+						
+						onclick = "[GetVariableSystem.Set('capellania_selected_slot', 'vitraux')]"
+						
+						background = {
+							using = Background_Area_Dark
+							alpha = 0.2
+						}
+						
+						vbox = {
+							text_single = {
+								text = "CAPELLANIA_SLOT_VITRAUX_NAME"
+								default_format = "#high"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(CFixedPoint)0' )]"
+								text = "CAPELLANIA_UPGRADE_NONE"
+								default_format = "#weak"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(CFixedPoint)1' )]"
+								text = "CAPELLANIA_UPGRADE_BASIC"
+								default_format = "#true"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(CFixedPoint)2' )]"
+								text = "CAPELLANIA_UPGRADE_DYNASTIC"
+								default_format = "#gold"
+							}
+						}
+					}
+					
+					# 2. AUTEL (Altar) Bounding Box
+					button = {
+						name = "slot_autel"
+						position = { 250 210 }
+						size = { 140 120 }
+						
+						onclick = "[GetVariableSystem.Set('capellania_selected_slot', 'autel')]"
+						
+						background = {
+							using = Background_Area_Dark
+							alpha = 0.2
+						}
+						
+						vbox = {
+							text_single = {
+								text = "CAPELLANIA_SLOT_AUTEL_NAME"
+								default_format = "#high"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(CFixedPoint)0' )]"
+								text = "CAPELLANIA_UPGRADE_NONE"
+								default_format = "#weak"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(CFixedPoint)1' )]"
+								text = "CAPELLANIA_UPGRADE_BASIC"
+								default_format = "#true"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(CFixedPoint)2' )]"
+								text = "CAPELLANIA_UPGRADE_FLEMISH"
+								default_format = "#gold"
+							}
+						}
+					}
+					
+					# 3. TOMBEAUX (Tombs) Bounding Box
+					button = {
+						name = "slot_tombeaux"
+						position = { 40 330 }
+						size = { 150 110 }
+						
+						onclick = "[GetVariableSystem.Set('capellania_selected_slot', 'tombeaux')]"
+						
+						background = {
+							using = Background_Area_Dark
+							alpha = 0.2
+						}
+						
+						vbox = {
+							text_single = {
+								text = "CAPELLANIA_SLOT_TOMBEAUX_NAME"
+								default_format = "#high"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(CFixedPoint)0' )]"
+								text = "CAPELLANIA_UPGRADE_NONE"
+								default_format = "#weak"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(CFixedPoint)1' )]"
+								text = "CAPELLANIA_UPGRADE_BASIC"
+								default_format = "#true"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(CFixedPoint)2' )]"
+								text = "CAPELLANIA_UPGRADE_SOLENNEL"
+								default_format = "#gold"
+							}
+						}
+					}
+					
+					# 4. MOBILIER (Furniture) Bounding Box
+					button = {
+						name = "slot_mobilier"
+						position = { 450 330 }
+						size = { 150 110 }
+						
+						onclick = "[GetVariableSystem.Set('capellania_selected_slot', 'mobilier')]"
+						
+						background = {
+							using = Background_Area_Dark
+							alpha = 0.2
+						}
+						
+						vbox = {
+							text_single = {
+								text = "CAPELLANIA_SLOT_MOBILIER_NAME"
+								default_format = "#high"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(CFixedPoint)0' )]"
+								text = "CAPELLANIA_UPGRADE_NONE"
+								default_format = "#weak"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(CFixedPoint)1' )]"
+								text = "CAPELLANIA_UPGRADE_BASIC"
+								default_format = "#true"
+							}
+							text_single = {
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(CFixedPoint)2' )]"
+								text = "CAPELLANIA_UPGRADE_COMPLET"
+								default_format = "#gold"
+							}
+						}
+					}
+				}
+				
+				# Bottom Section: Gauges
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 20
+					
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						text_single = { text = "CAPELLANIA_PRESTIGE_LABEL" }
+						progressbar_standard = {
+							size = { 120 15 }
+							value = "[GetPlayer.MakeScope.ScriptValue('capellania_prestige_percent')]"
+						}
+					}
+					
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						text_single = { text = "CAPELLANIA_CAPACITY_LABEL" }
+						progressbar_standard = {
+							size = { 120 15 }
+							value = "[GetPlayer.MakeScope.ScriptValue('capellania_liturgical_capacity_percent')]"
+						}
+					}
+					
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						text_single = { text = "CAPELLANIA_DISCIPLINE_LABEL" }
+						progressbar_standard = {
+							size = { 120 15 }
+							value = "[GetPlayer.MakeScope.ScriptValue('capellania_discipline_percent')]"
+						}
+					}
+					
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						text_single = { text = "CAPELLANIA_CONFORMITY_LABEL" }
+						progressbar_standard = {
+							size = { 120 15 }
+							value = "[GetPlayer.MakeScope.ScriptValue('capellania_conformity_percent')]"
+						}
+					}
+				}
+			}
+			
+			# RIGHT PANEL: Wireframe C Details (Width: 360)
+			vbox = {
+				layoutpolicy_vertical = expanding
+				size = { 360 600 }
+				spacing = 15
+				
+				background = {
+					using = Background_Area
+				}
+				
+				margin = { 15 15 }
+				
+				# Header of Details
+				text_single = {
+					text = "CAPELLANIA_DETAIL_PANEL_HEADER"
+					using = Font_Size_Medium
+					default_format = "#light"
+				}
+				
+				# Empty Selection Fallback
+				vbox = {
+					visible = "[Not( GetVariableSystem.Exists('capellania_selected_slot') )]"
+					layoutpolicy_vertical = expanding
+					layoutpolicy_horizontal = expanding
+					
+					text_multi = {
+						size = { 320 100 }
+						text = "CAPELLANIA_SELECT_SLOT_INSTRUCTION"
+						align = center
+					}
+				}
+				
+				# Detail block: AUTEL
+				vbox = {
+					visible = "[GetVariableSystem.HasValue('capellania_selected_slot', 'autel')]"
+					layoutpolicy_vertical = expanding
+					layoutpolicy_horizontal = expanding
+					spacing = 15
+					
+					text_single = {
+						text = "CAPELLANIA_SLOT_AUTEL_NAME"
+						using = Font_Size_Medium
+					}
+					
+					text_multi = {
+						size = { 320 120 }
+						text = "CAPELLANIA_SLOT_AUTEL_DETAIL_DESC"
+					}
+					
+					# Action Button to order retable
+					button_primary = {
+						name = "order_retable"
+						size = { 280 42 }
+						text = "CAPELLANIA_ORDER_RETABLE"
+						enabled = "[GetScriptedGui('capellania_purchase_retable').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						onclick = "[GetScriptedGui('capellania_purchase_retable').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+					}
+				}
+				
+				# Detail block: VITRAUX
+				vbox = {
+					visible = "[GetVariableSystem.HasValue('capellania_selected_slot', 'vitraux')]"
+					layoutpolicy_vertical = expanding
+					layoutpolicy_horizontal = expanding
+					spacing = 15
+					
+					text_single = {
+						text = "CAPELLANIA_SLOT_VITRAUX_NAME"
+						using = Font_Size_Medium
+					}
+					
+					text_multi = {
+						size = { 320 120 }
+						text = "CAPELLANIA_SLOT_VITRAUX_DETAIL_DESC"
+					}
+					
+					button_primary = {
+						name = "order_vitraux"
+						size = { 280 42 }
+						text = "CAPELLANIA_ORDER_VITRAUX"
+						enabled = "[GetScriptedGui('capellania_purchase_vitraux').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						onclick = "[GetScriptedGui('capellania_purchase_vitraux').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+					}
+				}
+				
+				# Detail block: TOMBEAUX
+				vbox = {
+					visible = "[GetVariableSystem.HasValue('capellania_selected_slot', 'tombeaux')]"
+					layoutpolicy_vertical = expanding
+					layoutpolicy_horizontal = expanding
+					spacing = 15
+					
+					text_single = {
+						text = "CAPELLANIA_SLOT_TOMBEAUX_NAME"
+						using = Font_Size_Medium
+					}
+					
+					text_multi = {
+						size = { 320 120 }
+						text = "CAPELLANIA_SLOT_TOMBEAUX_DETAIL_DESC"
+					}
+					
+					button_primary = {
+						name = "order_tombeaux"
+						size = { 280 42 }
+						text = "CAPELLANIA_ORDER_TOMBEAUX"
+						enabled = "[GetScriptedGui('capellania_purchase_tombeaux').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						onclick = "[GetScriptedGui('capellania_purchase_tombeaux').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+					}
+				}
+				
+				# Detail block: MOBILIER
+				vbox = {
+					visible = "[GetVariableSystem.HasValue('capellania_selected_slot', 'mobilier')]"
+					layoutpolicy_vertical = expanding
+					layoutpolicy_horizontal = expanding
+					spacing = 15
+					
+					text_single = {
+						text = "CAPELLANIA_SLOT_MOBILIER_NAME"
+						using = Font_Size_Medium
+					}
+					
+					text_multi = {
+						size = { 320 120 }
+						text = "CAPELLANIA_SLOT_MOBILIER_DETAIL_DESC"
+					}
+					
+					button_primary = {
+						name = "order_mobilier"
+						size = { 280 42 }
+						text = "CAPELLANIA_ORDER_MOBILIER"
+						enabled = "[GetScriptedGui('capellania_purchase_mobilier').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						onclick = "[GetScriptedGui('capellania_purchase_mobilier').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+					}
+				}
+			}
+		}
+	}
+}

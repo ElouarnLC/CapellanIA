@@ -6,7 +6,7 @@ window = {
 	parentanchor = center
 	size = { 1050 720 }
 	layer = middle
-	visible = "[GetScriptedGui('capellania_open_window').IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+	visible = "[And( GetPlayer.IsValid, GetScriptedGui('capellania_open_window').IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) )]"
 	
 	using = Window_Background
 	using = Window_Decoration_Spiky

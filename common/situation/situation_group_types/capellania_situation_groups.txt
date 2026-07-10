@@ -1,0 +1,2 @@
+﻿capellania_situation_group = {
+}

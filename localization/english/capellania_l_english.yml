@@ -1,4 +1,4 @@
-﻿l_english:
+l_english:
  CAPELLANIA_WINDOW_TITLE:0 "Court Chapel Administration - CapellanIA"
  CAPELLANIA_SLOT_VITRAUX_NAME:0 "Stained Glass"
  CAPELLANIA_SLOT_AUTEL_NAME:0 "Altar"
@@ -65,9 +65,11 @@
  # Decisions Localization
  capellania_found_chapel_title:0 "Found a Court Chapel"
  capellania_found_chapel_desc:0 "Establish a dedicated place of worship and dynastic representation at court. This starts the foundation process."
+ capellania_found_chapel_tooltip:0 "Initiates the foundation of your private court chapel."
  capellania_found_chapel_confirm:0 "Initiate Foundation"
  capellania_open_chapel_title:0 "Manage Court Chapel"
  capellania_open_chapel_desc:0 "Open or close the administration dashboard for our court chapel."
+ capellania_open_chapel_tooltip:0 "Opens the court chapel administration dashboard."
  capellania_open_chapel_confirm:0 "Toggle Window"
  
  # Events Localization

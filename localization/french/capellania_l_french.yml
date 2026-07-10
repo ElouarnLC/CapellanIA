@@ -1,4 +1,4 @@
-﻿l_french:
+l_french:
  CAPELLANIA_WINDOW_TITLE:0 "Administration de la Chapelle de Cour - CapellanIA"
  CAPELLANIA_SLOT_VITRAUX_NAME:0 "Vitraux"
  CAPELLANIA_SLOT_AUTEL_NAME:0 "Autel"
@@ -65,9 +65,11 @@
  # Decisions Localization
  capellania_found_chapel_title:0 "Fonder une Chapelle de Cour"
  capellania_found_chapel_desc:0 "Établir un lieu de culte et de représentation dynastique à la cour. Cela lance le processus de fondation."
+ capellania_found_chapel_tooltip:0 "Initie la fondation de votre chapelle de cour privée."
  capellania_found_chapel_confirm:0 "Lancer la fondation"
  capellania_open_chapel_title:0 "Gérer la Chapelle de Cour"
  capellania_open_chapel_desc:0 "Ouvrir ou fermer le tableau de bord de la chapelle de cour."
+ capellania_open_chapel_tooltip:0 "Ouvre le tableau de bord de gestion de la chapelle de cour."
  capellania_open_chapel_confirm:0 "Afficher/Masquer"
  
  # Events Localization

@@ -44,7 +44,7 @@ window = {
 					
 					# Background Canvas Illustration
 					background = {
-						texture = "gfx/interface/illustrations/chapelle_loire_fond.png"
+						texture = "gfx/interface/illustrations/chapelle_loire_fond.dds"
 					}
 					
 					# Clickable 2D Bounding-Box Slots

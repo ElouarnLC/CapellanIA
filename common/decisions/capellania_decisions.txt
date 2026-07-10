@@ -1,9 +1,10 @@
-﻿# CapellanIA: Major and Utility Decisions
+# CapellanIA: Major and Utility Decisions
 
 capellania_found_chapel = {
 	title = capellania_found_chapel_title
 	desc = capellania_found_chapel_desc
 	confirm_text = capellania_found_chapel_confirm
+	ai_check_interval = 0
 	
 	is_shown = {
 		is_adult = yes
@@ -11,13 +12,11 @@ capellania_found_chapel = {
 		not = { has_character_flag = chapel_is_active }
 	}
 	
-	is_valid = {
-		gold >= 150
+	cost = {
+		gold = 150
 	}
 	
 	effect = {
-		add_gold = -150
-		
 		# Launch the interactive setup event chain
 		trigger_event = {
 			id = capellania_found_events.0001
@@ -29,6 +28,7 @@ capellania_open_chapel = {
 	title = capellania_open_chapel_title
 	desc = capellania_open_chapel_desc
 	confirm_text = capellania_open_chapel_confirm
+	ai_check_interval = 0
 	
 	is_shown = {
 		has_character_flag = chapel_is_active

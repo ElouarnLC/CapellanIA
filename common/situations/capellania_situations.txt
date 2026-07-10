@@ -1,4 +1,4 @@
-﻿# CapellanIA: Custom Parish Conflict Situation
+# CapellanIA: Custom Parish Conflict Situation
 # Target Scope: Character (Sovereign)
 
 capellania_conflit_paroissial = {
@@ -13,7 +13,7 @@ capellania_conflit_paroissial = {
 	}
 	
 	progression = {
-		value = character_variable:chapel_conflict_tension
+		value = var:chapel_conflict_tension
 	}
 	
 	on_start = {
@@ -26,7 +26,7 @@ capellania_conflit_paroissial = {
 		if = {
 			limit = {
 				compare_value = {
-					value = character_variable:chapel_conflict_support
+					value = var:chapel_conflict_support
 					op = >=
 					compare_to = 70
 				}
@@ -41,7 +41,7 @@ capellania_conflit_paroissial = {
 		else_if = {
 			limit = {
 				compare_value = {
-					value = character_variable:chapel_conflict_tension
+					value = var:chapel_conflict_tension
 					op = >=
 					compare_to = 80
 				}
@@ -56,7 +56,7 @@ capellania_conflit_paroissial = {
 		else = {
 			# Compromise
 			change_variable = { name = chapel_conformity change = 5 }
-			add_gold = -50
+			remove_gold = 50
 			remove_variable = chapel_conflict_tension
 			remove_variable = chapel_conflict_support
 			remove_variable = chapel_conflict_influence

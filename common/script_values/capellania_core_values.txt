@@ -1,10 +1,10 @@
-﻿# CapellanIA: Core Script Values
+# CapellanIA: Core Script Values
 # Target Scope: Character
 
 capellania_prestige_value = {
 	if = {
 		limit = { has_variable = chapel_prestige }
-		value = character_variable:chapel_prestige
+		value = var:chapel_prestige
 	}
 	else = {
 		value = 0
@@ -14,7 +14,7 @@ capellania_prestige_value = {
 capellania_liturgical_capacity_value = {
 	if = {
 		limit = { has_variable = chapel_liturgical_capacity }
-		value = character_variable:chapel_liturgical_capacity
+		value = var:chapel_liturgical_capacity
 	}
 	else = {
 		value = 0
@@ -24,7 +24,7 @@ capellania_liturgical_capacity_value = {
 capellania_liturgical_load_value = {
 	if = {
 		limit = { has_variable = chapel_liturgical_load }
-		value = character_variable:chapel_liturgical_load
+		value = var:chapel_liturgical_load
 	}
 	else = {
 		value = 0
@@ -34,7 +34,7 @@ capellania_liturgical_load_value = {
 capellania_discipline_value = {
 	if = {
 		limit = { has_variable = chapel_discipline }
-		value = character_variable:chapel_discipline
+		value = var:chapel_discipline
 	}
 	else = {
 		value = 0
@@ -44,7 +44,7 @@ capellania_discipline_value = {
 capellania_conformity_value = {
 	if = {
 		limit = { has_variable = chapel_conformity }
-		value = character_variable:chapel_conformity
+		value = var:chapel_conformity
 	}
 	else = {
 		value = 0
@@ -55,7 +55,7 @@ capellania_conformity_value = {
 capellania_slot_autel_value = {
 	if = {
 		limit = { has_variable = chapel_slot_autel }
-		value = character_variable:chapel_slot_autel
+		value = var:chapel_slot_autel
 	}
 	else = {
 		value = 0
@@ -65,7 +65,7 @@ capellania_slot_autel_value = {
 capellania_slot_vitraux_value = {
 	if = {
 		limit = { has_variable = chapel_slot_vitraux }
-		value = character_variable:chapel_slot_vitraux
+		value = var:chapel_slot_vitraux
 	}
 	else = {
 		value = 0
@@ -75,7 +75,7 @@ capellania_slot_vitraux_value = {
 capellania_slot_tombeaux_value = {
 	if = {
 		limit = { has_variable = chapel_slot_tombeaux }
-		value = character_variable:chapel_slot_tombeaux
+		value = var:chapel_slot_tombeaux
 	}
 	else = {
 		value = 0
@@ -85,9 +85,30 @@ capellania_slot_tombeaux_value = {
 capellania_slot_mobilier_value = {
 	if = {
 		limit = { has_variable = chapel_slot_mobilier }
-		value = character_variable:chapel_slot_mobilier
+		value = var:chapel_slot_mobilier
 	}
 	else = {
 		value = 0
 	}
+}
+
+# Normalized Percent/Fraction values (0.0 to 1.0) for UI progress bars
+capellania_prestige_percent = {
+	value = capellania_prestige_value
+	divide = 100
+}
+
+capellania_liturgical_capacity_percent = {
+	value = capellania_liturgical_capacity_value
+	divide = 20
+}
+
+capellania_discipline_percent = {
+	value = capellania_discipline_value
+	divide = 100
+}
+
+capellania_conformity_percent = {
+	value = capellania_conformity_value
+	divide = 100
 }

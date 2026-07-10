@@ -1,4 +1,4 @@
-﻿# CapellanIA: Scripted GUIs for UI and Logic Interface
+# CapellanIA: Scripted GUIs for UI and Logic Interface
 # Target Scope: Character (Sovereign)
 
 capellania_open_window = {
@@ -26,7 +26,7 @@ capellania_purchase_retable = {
 		not = {
 			has_variable = chapel_slot_autel
 			compare_value = {
-				value = character_variable:chapel_slot_autel
+				value = var:chapel_slot_autel
 				op = >=
 				compare_to = 2
 			}
@@ -36,7 +36,7 @@ capellania_purchase_retable = {
 		gold >= 145
 	}
 	effect = {
-		add_gold = -145
+		remove_gold = 145
 		
 		# Historical uncertainty roll: 85% success, 15% failure
 		random = {
@@ -68,7 +68,7 @@ capellania_purchase_vitraux = {
 		not = {
 			has_variable = chapel_slot_vitraux
 			compare_value = {
-				value = character_variable:chapel_slot_vitraux
+				value = var:chapel_slot_vitraux
 				op = >=
 				compare_to = 2
 			}
@@ -78,7 +78,7 @@ capellania_purchase_vitraux = {
 		gold >= 120
 	}
 	effect = {
-		add_gold = -120
+		remove_gold = 120
 		
 		# Historical uncertainty roll: 90% success, 10% failure
 		random = {
@@ -110,7 +110,7 @@ capellania_purchase_tombeaux = {
 		not = {
 			has_variable = chapel_slot_tombeaux
 			compare_value = {
-				value = character_variable:chapel_slot_tombeaux
+				value = var:chapel_slot_tombeaux
 				op = >=
 				compare_to = 2
 			}
@@ -120,7 +120,7 @@ capellania_purchase_tombeaux = {
 		gold >= 160
 	}
 	effect = {
-		add_gold = -160
+		remove_gold = 160
 		
 		# Historical uncertainty roll: 80% success, 20% failure
 		random = {
@@ -152,7 +152,7 @@ capellania_purchase_mobilier = {
 		not = {
 			has_variable = chapel_slot_mobilier
 			compare_value = {
-				value = character_variable:chapel_slot_mobilier
+				value = var:chapel_slot_mobilier
 				op = >=
 				compare_to = 2
 			}
@@ -162,7 +162,7 @@ capellania_purchase_mobilier = {
 		gold >= 100
 	}
 	effect = {
-		add_gold = -100
+		remove_gold = 100
 		
 		# Historical uncertainty roll: 95% success, 5% failure
 		random = {

@@ -1,4 +1,4 @@
-﻿# CapellanIA: GUI Layout for Window Court Chapel
+# CapellanIA: GUI Layout for Window Court Chapel
 # Visualizes Wireframe A (Dashboard) and Wireframe C (Decoration screen)
 
 window = {
@@ -6,7 +6,7 @@ window = {
 	parentanchor = center
 	size = { 1050 720 }
 	layer = middle
-	visible = "[GetScriptedGui('capellania_open_window').IsShown( GetPlayer )]"
+	visible = "[GetScriptedGui('capellania_open_window').IsShown( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 	
 	using = Window_Background
 	using = Window_Decoration_Spiky
@@ -21,7 +21,7 @@ window = {
 				text = "CAPELLANIA_WINDOW_TITLE"
 			}
 			blockoverride "button_close" {
-				onclick = "[GetScriptedGui('capellania_close_window').Execute( GetPlayer )]"
+				onclick = "[GetScriptedGui('capellania_close_window').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 			}
 		}
 		
@@ -67,17 +67,17 @@ window = {
 								default_format = "#high"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(int32)0' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(CFixedPoint)0' )]"
 								text = "CAPELLANIA_UPGRADE_NONE"
 								default_format = "#weak"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(int32)1' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(CFixedPoint)1' )]"
 								text = "CAPELLANIA_UPGRADE_BASIC"
 								default_format = "#true"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(int32)2' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_vitraux').GetValue, '(CFixedPoint)2' )]"
 								text = "CAPELLANIA_UPGRADE_DYNASTIC"
 								default_format = "#gold"
 							}
@@ -103,17 +103,17 @@ window = {
 								default_format = "#high"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(int32)0' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(CFixedPoint)0' )]"
 								text = "CAPELLANIA_UPGRADE_NONE"
 								default_format = "#weak"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(int32)1' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(CFixedPoint)1' )]"
 								text = "CAPELLANIA_UPGRADE_BASIC"
 								default_format = "#true"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(int32)2' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_autel').GetValue, '(CFixedPoint)2' )]"
 								text = "CAPELLANIA_UPGRADE_FLEMISH"
 								default_format = "#gold"
 							}
@@ -139,17 +139,17 @@ window = {
 								default_format = "#high"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(int32)0' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(CFixedPoint)0' )]"
 								text = "CAPELLANIA_UPGRADE_NONE"
 								default_format = "#weak"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(int32)1' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(CFixedPoint)1' )]"
 								text = "CAPELLANIA_UPGRADE_BASIC"
 								default_format = "#true"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(int32)2' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_tombeaux').GetValue, '(CFixedPoint)2' )]"
 								text = "CAPELLANIA_UPGRADE_SOLENNEL"
 								default_format = "#gold"
 							}
@@ -175,17 +175,17 @@ window = {
 								default_format = "#high"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(int32)0' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(CFixedPoint)0' )]"
 								text = "CAPELLANIA_UPGRADE_NONE"
 								default_format = "#weak"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(int32)1' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(CFixedPoint)1' )]"
 								text = "CAPELLANIA_UPGRADE_BASIC"
 								default_format = "#true"
 							}
 							text_single = {
-								visible = "[EqualTo_int32( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(int32)2' )]"
+								visible = "[EqualTo_CFixedPoint( GetPlayer.MakeScope.Var('chapel_slot_mobilier').GetValue, '(CFixedPoint)2' )]"
 								text = "CAPELLANIA_UPGRADE_COMPLET"
 								default_format = "#gold"
 							}
@@ -203,9 +203,7 @@ window = {
 						text_single = { text = "CAPELLANIA_PRESTIGE_LABEL" }
 						progressbar_standard = {
 							size = { 120 15 }
-							value = "[FixedPointToFloat( GetPlayer.MakeScope.Var('chapel_prestige').GetValue )]"
-							min = 0
-							max = 100
+							value = "[GetPlayer.MakeScope.ScriptValue('capellania_prestige_percent')]"
 						}
 					}
 					
@@ -214,9 +212,7 @@ window = {
 						text_single = { text = "CAPELLANIA_CAPACITY_LABEL" }
 						progressbar_standard = {
 							size = { 120 15 }
-							value = "[FixedPointToFloat( GetPlayer.MakeScope.Var('chapel_liturgical_capacity').GetValue )]"
-							min = 0
-							max = 20
+							value = "[GetPlayer.MakeScope.ScriptValue('capellania_liturgical_capacity_percent')]"
 						}
 					}
 					
@@ -225,9 +221,7 @@ window = {
 						text_single = { text = "CAPELLANIA_DISCIPLINE_LABEL" }
 						progressbar_standard = {
 							size = { 120 15 }
-							value = "[FixedPointToFloat( GetPlayer.MakeScope.Var('chapel_discipline').GetValue )]"
-							min = 0
-							max = 100
+							value = "[GetPlayer.MakeScope.ScriptValue('capellania_discipline_percent')]"
 						}
 					}
 					
@@ -236,9 +230,7 @@ window = {
 						text_single = { text = "CAPELLANIA_CONFORMITY_LABEL" }
 						progressbar_standard = {
 							size = { 120 15 }
-							value = "[FixedPointToFloat( GetPlayer.MakeScope.Var('chapel_conformity').GetValue )]"
-							min = 0
-							max = 100
+							value = "[GetPlayer.MakeScope.ScriptValue('capellania_conformity_percent')]"
 						}
 					}
 				}
@@ -298,8 +290,8 @@ window = {
 						name = "order_retable"
 						size = { 280 42 }
 						text = "CAPELLANIA_ORDER_RETABLE"
-						enabled = "[GetScriptedGui('capellania_purchase_retable').IsValid( GetPlayer )]"
-						onclick = "[GetScriptedGui('capellania_purchase_retable').Execute( GetPlayer )]"
+						enabled = "[GetScriptedGui('capellania_purchase_retable').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						onclick = "[GetScriptedGui('capellania_purchase_retable').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 					}
 				}
 				
@@ -324,8 +316,8 @@ window = {
 						name = "order_vitraux"
 						size = { 280 42 }
 						text = "CAPELLANIA_ORDER_VITRAUX"
-						enabled = "[GetScriptedGui('capellania_purchase_vitraux').IsValid( GetPlayer )]"
-						onclick = "[GetScriptedGui('capellania_purchase_vitraux').Execute( GetPlayer )]"
+						enabled = "[GetScriptedGui('capellania_purchase_vitraux').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						onclick = "[GetScriptedGui('capellania_purchase_vitraux').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 					}
 				}
 				
@@ -350,8 +342,8 @@ window = {
 						name = "order_tombeaux"
 						size = { 280 42 }
 						text = "CAPELLANIA_ORDER_TOMBEAUX"
-						enabled = "[GetScriptedGui('capellania_purchase_tombeaux').IsValid( GetPlayer )]"
-						onclick = "[GetScriptedGui('capellania_purchase_tombeaux').Execute( GetPlayer )]"
+						enabled = "[GetScriptedGui('capellania_purchase_tombeaux').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						onclick = "[GetScriptedGui('capellania_purchase_tombeaux').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 					}
 				}
 				
@@ -376,8 +368,8 @@ window = {
 						name = "order_mobilier"
 						size = { 280 42 }
 						text = "CAPELLANIA_ORDER_MOBILIER"
-						enabled = "[GetScriptedGui('capellania_purchase_mobilier').IsValid( GetPlayer )]"
-						onclick = "[GetScriptedGui('capellania_purchase_mobilier').Execute( GetPlayer )]"
+						enabled = "[GetScriptedGui('capellania_purchase_mobilier').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+						onclick = "[GetScriptedGui('capellania_purchase_mobilier').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
 					}
 				}
 			}

@@ -1,0 +1,1 @@
+﻿gui/window_court_chapel.gui = window_court_chapel

@@ -1,4 +1,4 @@
-# CapellanIA: Core Script Values
+﻿# CapellanIA: Core Script Values
 # Target Scope: Character
 
 capellania_prestige_value = {

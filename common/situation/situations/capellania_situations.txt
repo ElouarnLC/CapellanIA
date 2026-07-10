@@ -1,15 +1,15 @@
-# CapellanIA: Custom Parish Conflict Situation
+﻿# CapellanIA: Custom Parish Conflict Situation
 # Target Scope: Character (Sovereign)
 
 capellania_conflit_paroissial = {
 	type = linear
 	
 	stages = {
-		capellania_stage_empietement
-		capellania_stage_protestation
-		capellania_stage_enquete
-		capellania_stage_arbitrage
-		capellania_stage_issue
+		capellania_stage_empietement = {}
+		capellania_stage_protestation = {}
+		capellania_stage_enquete = {}
+		capellania_stage_arbitrage = {}
+		capellania_stage_issue = {}
 	}
 	
 	progression = {

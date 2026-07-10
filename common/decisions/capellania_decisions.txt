@@ -1,4 +1,4 @@
-# CapellanIA: Major and Utility Decisions
+﻿# CapellanIA: Major and Utility Decisions
 
 capellania_found_chapel = {
 	title = capellania_found_chapel_title

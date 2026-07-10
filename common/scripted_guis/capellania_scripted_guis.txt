@@ -1,4 +1,4 @@
-# CapellanIA: Scripted GUIs for UI and Logic Interface
+﻿# CapellanIA: Scripted GUIs for UI and Logic Interface
 # Target Scope: Character (Sovereign)
 
 capellania_open_window = {

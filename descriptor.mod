@@ -6,5 +6,5 @@ tags={
 	"Culture"
 }
 name="Creating the Sacred through Decor: Court Chapels"
-supported_version="1.12.*"
+supported_version="1.19.*"
 path="mod/CapellanIA"

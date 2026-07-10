@@ -1,4 +1,4 @@
-# CapellanIA: Scripted GUIs for UI and Logic Interface
+﻿# CapellanIA: Scripted GUIs for UI and Logic Interface
 # Target Scope: Character (Sovereign)
 
 capellania_open_window = {
@@ -7,7 +7,7 @@ capellania_open_window = {
 		has_character_flag = chapel_window_opened
 	}
 	effect = {
-		set_character_flag = chapel_window_opened
+		add_character_flag = chapel_window_opened
 	}
 }
 
@@ -36,7 +36,7 @@ capellania_purchase_retable = {
 		gold >= 145
 	}
 	effect = {
-		pay_short_term_gold_cost = 145
+		add_gold = -145
 		
 		# Historical uncertainty roll: 85% success, 15% failure
 		random = {
@@ -78,7 +78,7 @@ capellania_purchase_vitraux = {
 		gold >= 120
 	}
 	effect = {
-		pay_short_term_gold_cost = 120
+		add_gold = -120
 		
 		# Historical uncertainty roll: 90% success, 10% failure
 		random = {
@@ -120,7 +120,7 @@ capellania_purchase_tombeaux = {
 		gold >= 160
 	}
 	effect = {
-		pay_short_term_gold_cost = 160
+		add_gold = -160
 		
 		# Historical uncertainty roll: 80% success, 20% failure
 		random = {
@@ -162,7 +162,7 @@ capellania_purchase_mobilier = {
 		gold >= 100
 	}
 	effect = {
-		pay_short_term_gold_cost = 100
+		add_gold = -100
 		
 		# Historical uncertainty roll: 95% success, 5% failure
 		random = {

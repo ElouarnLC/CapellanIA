@@ -1,4 +1,4 @@
-# CapellanIA: Interactive Foundation Event Chain
+﻿# CapellanIA: Interactive Foundation Event Chain
 namespace = capellania_found_events
 
 # Event 1: Dedication Setup

@@ -1,4 +1,4 @@
-# CapellanIA: GUI Layout for Window Court Chapel
+﻿# CapellanIA: GUI Layout for Window Court Chapel
 # Visualizes Wireframe A (Dashboard) and Wireframe C (Decoration screen)
 
 window = {
@@ -45,7 +45,6 @@ window = {
 					# Background Canvas Illustration
 					background = {
 						texture = "gfx/interface/illustrations/chapelle_loire_fond.png"
-						fittype = stretch
 					}
 					
 					# Clickable 2D Bounding-Box Slots
@@ -63,7 +62,6 @@ window = {
 						}
 						
 						vbox = {
-							alignment = center
 							text_single = {
 								text = "CAPELLANIA_SLOT_VITRAUX_NAME"
 								default_format = "#high"
@@ -100,7 +98,6 @@ window = {
 						}
 						
 						vbox = {
-							alignment = center
 							text_single = {
 								text = "CAPELLANIA_SLOT_AUTEL_NAME"
 								default_format = "#high"
@@ -137,7 +134,6 @@ window = {
 						}
 						
 						vbox = {
-							alignment = center
 							text_single = {
 								text = "CAPELLANIA_SLOT_TOMBEAUX_NAME"
 								default_format = "#high"
@@ -174,7 +170,6 @@ window = {
 						}
 						
 						vbox = {
-							alignment = center
 							text_single = {
 								text = "CAPELLANIA_SLOT_MOBILIER_NAME"
 								default_format = "#high"
@@ -273,7 +268,6 @@ window = {
 					visible = "[Not( GetVariableSystem.Exists('capellania_selected_slot') )]"
 					layoutpolicy_vertical = expanding
 					layoutpolicy_horizontal = expanding
-					alignment = center
 					
 					text_multi = {
 						size = { 320 100 }

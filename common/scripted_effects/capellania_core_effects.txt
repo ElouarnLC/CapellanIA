@@ -1,4 +1,4 @@
-# CapellanIA: Core Scripted Effects for Data Engine
+﻿# CapellanIA: Core Scripted Effects for Data Engine
 # Target Scope: Character (Sovereign)
 
 capellania_initialize_character_effect = {
@@ -6,10 +6,10 @@ capellania_initialize_character_effect = {
 		limit = {
 			not = { has_character_flag = chapel_is_active }
 		}
-		set_character_flag = chapel_is_active
+		add_character_flag = chapel_is_active
 		
 		# Set baseline status to resident
-		set_character_flag = chapel_status_resident
+		add_character_flag = chapel_status_resident
 		
 		# Initialize core numerical tracking variables (0-100 scale)
 		set_variable = { name = chapel_prestige value = 50 }
@@ -30,28 +30,28 @@ capellania_set_status_resident_effect = {
 	remove_character_flag = chapel_status_travel_light
 	remove_character_flag = chapel_status_travel_ordinary
 	remove_character_flag = chapel_status_travel_solemn
-	set_character_flag = chapel_status_resident
+	add_character_flag = chapel_status_resident
 }
 
 capellania_set_status_travel_light_effect = {
 	remove_character_flag = chapel_status_resident
 	remove_character_flag = chapel_status_travel_ordinary
 	remove_character_flag = chapel_status_travel_solemn
-	set_character_flag = chapel_status_travel_light
+	add_character_flag = chapel_status_travel_light
 }
 
 capellania_set_status_travel_ordinary_effect = {
 	remove_character_flag = chapel_status_resident
 	remove_character_flag = chapel_status_travel_light
 	remove_character_flag = chapel_status_travel_solemn
-	set_character_flag = chapel_status_travel_ordinary
+	add_character_flag = chapel_status_travel_ordinary
 }
 
 capellania_set_status_travel_solemn_effect = {
 	remove_character_flag = chapel_status_resident
 	remove_character_flag = chapel_status_travel_light
 	remove_character_flag = chapel_status_travel_ordinary
-	set_character_flag = chapel_status_travel_solemn
+	add_character_flag = chapel_status_travel_solemn
 }
 
 capellania_deactivate_effect = {

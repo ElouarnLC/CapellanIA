@@ -1,4 +1,4 @@
-# CapellanIA: Court Positions Setup
+﻿# CapellanIA: Court Positions Setup
 
 capellania_maitre_de_chapelle = {
 	max_amount = 1

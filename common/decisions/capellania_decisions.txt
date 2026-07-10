@@ -1,4 +1,4 @@
-# CapellanIA: Major and Utility Decisions
+﻿# CapellanIA: Major and Utility Decisions
 
 capellania_found_chapel = {
 	title = capellania_found_chapel_title
@@ -16,7 +16,7 @@ capellania_found_chapel = {
 	}
 	
 	effect = {
-		pay_short_term_gold_cost = 150
+		add_gold = -150
 		
 		# Launch the interactive setup event chain
 		trigger_event = {
@@ -44,7 +44,7 @@ capellania_open_chapel = {
 			remove_character_flag = chapel_window_opened
 		}
 		else = {
-			set_character_flag = chapel_window_opened
+			add_character_flag = chapel_window_opened
 		}
 	}
 }

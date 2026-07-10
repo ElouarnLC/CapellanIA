@@ -1,0 +1,187 @@
+# CapellanIA: Scripted GUIs for UI and Logic Interface
+# Target Scope: Character (Sovereign)
+
+capellania_open_window = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_window_opened
+	}
+	effect = {
+		set_character_flag = chapel_window_opened
+	}
+}
+
+capellania_close_window = {
+	scope = character
+	effect = {
+		remove_character_flag = chapel_window_opened
+	}
+}
+
+# 1. AUTEL PURCHASE LOGIC (Flemish Sculpted Retable)
+capellania_purchase_retable = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = {
+			has_variable = chapel_slot_autel
+			compare_value = {
+				value = character_variable:chapel_slot_autel
+				op = >=
+				compare_to = 2
+			}
+		}
+	}
+	is_valid = {
+		gold >= 145
+	}
+	effect = {
+		pay_short_term_gold_cost = 145
+		
+		# Historical uncertainty roll: 85% success, 15% failure
+		random = {
+			chance = 85
+			change_variable = { name = chapel_prestige change = 15 }
+			set_variable = { name = chapel_slot_autel value = 2 }
+			send_interface_toast = {
+				title = capellania.retable_success.title
+				desc = capellania.retable_success.desc
+			}
+		}
+		random = {
+			chance = 15
+			change_variable = { name = chapel_prestige change = -5 }
+			set_variable = { name = chapel_slot_autel value = 1 }
+			send_interface_toast = {
+				title = capellania.retable_fail.title
+				desc = capellania.retable_fail.desc
+			}
+		}
+	}
+}
+
+# 2. VITRAUX PURCHASE LOGIC (Dynastic Cycle Stained Glass)
+capellania_purchase_vitraux = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = {
+			has_variable = chapel_slot_vitraux
+			compare_value = {
+				value = character_variable:chapel_slot_vitraux
+				op = >=
+				compare_to = 2
+			}
+		}
+	}
+	is_valid = {
+		gold >= 120
+	}
+	effect = {
+		pay_short_term_gold_cost = 120
+		
+		# Historical uncertainty roll: 90% success, 10% failure
+		random = {
+			chance = 90
+			change_variable = { name = chapel_prestige change = 10 }
+			set_variable = { name = chapel_slot_vitraux value = 2 }
+			send_interface_toast = {
+				title = capellania.vitraux_success.title
+				desc = capellania.vitraux_success.desc
+			}
+		}
+		random = {
+			chance = 10
+			change_variable = { name = chapel_prestige change = -3 }
+			set_variable = { name = chapel_slot_vitraux value = 1 }
+			send_interface_toast = {
+				title = capellania.vitraux_fail.title
+				desc = capellania.vitraux_fail.desc
+			}
+		}
+	}
+}
+
+# 3. TOMBEAUX PURCHASE LOGIC (Solemn Dynastic Tombs)
+capellania_purchase_tombeaux = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = {
+			has_variable = chapel_slot_tombeaux
+			compare_value = {
+				value = character_variable:chapel_slot_tombeaux
+				op = >=
+				compare_to = 2
+			}
+		}
+	}
+	is_valid = {
+		gold >= 160
+	}
+	effect = {
+		pay_short_term_gold_cost = 160
+		
+		# Historical uncertainty roll: 80% success, 20% failure
+		random = {
+			chance = 80
+			change_variable = { name = chapel_prestige change = 20 }
+			set_variable = { name = chapel_slot_tombeaux value = 2 }
+			send_interface_toast = {
+				title = capellania.tombeaux_success.title
+				desc = capellania.tombeaux_success.desc
+			}
+		}
+		random = {
+			chance = 20
+			change_variable = { name = chapel_prestige change = -6 }
+			set_variable = { name = chapel_slot_tombeaux value = 1 }
+			send_interface_toast = {
+				title = capellania.tombeaux_fail.title
+				desc = capellania.tombeaux_fail.desc
+			}
+		}
+	}
+}
+
+# 4. MOBILIER PURCHASE LOGIC (Complete Carved Furniture)
+capellania_purchase_mobilier = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = {
+			has_variable = chapel_slot_mobilier
+			compare_value = {
+				value = character_variable:chapel_slot_mobilier
+				op = >=
+				compare_to = 2
+			}
+		}
+	}
+	is_valid = {
+		gold >= 100
+	}
+	effect = {
+		pay_short_term_gold_cost = 100
+		
+		# Historical uncertainty roll: 95% success, 5% failure
+		random = {
+			chance = 95
+			change_variable = { name = chapel_prestige change = 10 }
+			set_variable = { name = chapel_slot_mobilier value = 2 }
+			send_interface_toast = {
+				title = capellania.mobilier_success.title
+				desc = capellania.mobilier_success.desc
+			}
+		}
+		random = {
+			chance = 5
+			change_variable = { name = chapel_prestige change = -2 }
+			set_variable = { name = chapel_slot_mobilier value = 1 }
+			send_interface_toast = {
+				title = capellania.mobilier_fail.title
+				desc = capellania.mobilier_fail.desc
+			}
+		}
+	}
+}

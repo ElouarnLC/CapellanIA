@@ -1,0 +1,66 @@
+# CapellanIA: Travel Options Setup
+
+capellania_travel_light = {
+	is_shown = {
+		has_character_flag = chapel_is_active
+	}
+	
+	is_valid = {
+		is_adult = yes
+	}
+	
+	monthly_cost = 0.1
+	travel_speed_multiplier = 1.0
+	
+	on_select = {
+		capellania_set_status_travel_light_effect = yes
+	}
+	
+	character_modifier = {
+		piety_gain_mult = 0.02
+	}
+}
+
+capellania_travel_ordinary = {
+	is_shown = {
+		has_character_flag = chapel_is_active
+	}
+	
+	is_valid = {
+		is_adult = yes
+	}
+	
+	monthly_cost = 0.5
+	travel_speed_multiplier = 0.95
+	
+	on_select = {
+		capellania_set_status_travel_ordinary_effect = yes
+	}
+	
+	character_modifier = {
+		piety_gain_mult = 0.05
+		prestige_gain_mult = 0.05
+	}
+}
+
+capellania_travel_solemn = {
+	is_shown = {
+		has_character_flag = chapel_is_active
+	}
+	
+	is_valid = {
+		is_adult = yes
+	}
+	
+	monthly_cost = 1.5
+	travel_speed_multiplier = 0.80
+	
+	on_select = {
+		capellania_set_status_travel_solemn_effect = yes
+	}
+	
+	character_modifier = {
+		piety_gain_mult = 0.15
+		prestige_gain_mult = 0.15
+	}
+}

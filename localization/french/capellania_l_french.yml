@@ -1,0 +1,94 @@
+l_french:
+ CAPELLANIA_WINDOW_TITLE:0 "Administration de la Chapelle de Cour - CapellanIA"
+ CAPELLANIA_SLOT_VITRAUX_NAME:0 "Vitraux"
+ CAPELLANIA_SLOT_AUTEL_NAME:0 "Autel"
+ CAPELLANIA_SLOT_TOMBEAUX_NAME:0 "Tombeaux"
+ CAPELLANIA_SLOT_MOBILIER_NAME:0 "Mobilier"
+ 
+ CAPELLANIA_UPGRADE_NONE:0 "Aucun"
+ CAPELLANIA_UPGRADE_BASIC:0 "Standard"
+ CAPELLANIA_UPGRADE_DYNASTIC:0 "Cycle Dynastique"
+ CAPELLANIA_UPGRADE_FLEMISH:0 "Retable Sculpté Flamand"
+ CAPELLANIA_UPGRADE_SOLENNEL:0 "Mausolée Solennel"
+ CAPELLANIA_UPGRADE_COMPLET:0 "Mobilier Liturgique Complet"
+ 
+ CAPELLANIA_PRESTIGE_LABEL:0 "Prestige de la Chapelle"
+ CAPELLANIA_CAPACITY_LABEL:0 "Capacité Liturgique"
+ CAPELLANIA_DISCIPLINE_LABEL:0 "Discipline du Personnel"
+ CAPELLANIA_CONFORMITY_LABEL:0 "Conformité Canonique"
+ 
+ CAPELLANIA_DETAIL_PANEL_HEADER:0 "Détails de l'Aménagement"
+ CAPELLANIA_SELECT_SLOT_INSTRUCTION:0 "Sélectionnez une zone sur le dessin de la chapelle pour gérer son aménagement et ses projets de décoration."
+ 
+ CAPELLANIA_SLOT_AUTEL_DETAIL_DESC:0 "L'autel est le cœur théologique de la chapelle. Investir dans un retable sculpté flamand (145 Or) apporte un prestige important (+15) mais comporte un risque de 15% de retard de livraison."
+ CAPELLANIA_ORDER_RETABLE:0 "Commander le Retable Flamand (145 Or)"
+ 
+ CAPELLANIA_SLOT_VITRAUX_DETAIL_DESC:0 "Les vitraux filtrent la lumière divine. Commander un Cycle Dynastique sur mesure (120 Or) raconte l'histoire de votre lignée, accordant du prestige (+10) mais comportant un risque de 10% de casse pendant le transport."
+ CAPELLANIA_ORDER_VITRAUX:0 "Commander les Vitraux (120 Or)"
+ 
+ CAPELLANIA_SLOT_TOMBEAUX_DETAIL_DESC:0 "Les tombeaux commémorent les ancêtres. Créer un Mausolée Solennel (160 Or) augmente le prestige (+20) mais comporte un risque de 20% de retard de maçonnerie."
+ CAPELLANIA_ORDER_TOMBEAUX:0 "Commander le Mausolée (160 Or)"
+ 
+ CAPELLANIA_SLOT_MOBILIER_DETAIL_DESC:0 "Le mobilier liturgique accueille le personnel et les livres sacrés. Se procurer un Mobilier Liturgique Complet (100 Or) augmente la capacité et le prestige (+10) mais comporte un risque de 5% de retard de fabrication."
+ CAPELLANIA_ORDER_MOBILIER:0 "Commander le Mobilier (100 Or)"
+ 
+ capellania.retable_success.title:0 "Retable Achevé"
+ capellania.retable_success.desc:0 "Le retable sculpté flamand a été achevé et consacré avec succès !"
+ capellania.retable_fail.title:0 "Construction Retardée"
+ capellania.retable_fail.desc:0 "Les précieux panneaux de chêne ont été endommagés. Un autel de base a été installé à la place."
+ 
+ capellania.vitraux_success.title:0 "Vitraux Installés"
+ capellania.vitraux_success.desc:0 "Les fenêtres brillent désormais d'armoiries dynastiques et de scènes bibliques !"
+ capellania.vitraux_fail.title:0 "Verre Brisé"
+ capellania.vitraux_fail.desc:0 "Le chariot de l'artisan a versé, brisant les panneaux délicats. Des vitres ordinaires sont posées."
+ 
+ capellania.tombeaux_success.title:0 "Mausolée Érigé"
+ capellania.tombeaux_success.desc:0 "Les tombeaux de vos ancêtres ont été majestueusement sculptés dans une pierre blanche et fine."
+ capellania.tombeaux_fail.title:0 "Conflit de Maçonnerie"
+ capellania.tombeaux_fail.desc:0 "Une grève des maçons locaux a retardé la construction. Les tombes de base demeurent."
+ 
+ capellania.mobilier_success.title:0 "Mobilier Livré"
+ capellania.mobilier_success.desc:0 "Les stalles en chêne sculpté, le lutrin du chœur et le coffre sont installés avec succès."
+ capellania.mobilier_fail.title:0 "Défaut de Menuiserie"
+ capellania.mobilier_fail.desc:0 "Le bois a travaillé dans l'humidité de la chapelle, nécessitant des réparations. Des bancs basiques sont installés."
+ 
+ # Court Positions Localization
+ capellania_maitre_de_chapelle:0 "Maître de chapelle"
+ capellania_maitre_de_chapelle_desc:0 "Responsable de la coordination du chœur, de la liturgie et des programmes musicaux de la cour."
+ capellania_premier_chapelain:0 "Premier chaplain"
+ capellania_premier_chapelain_desc:0 "Prêtre principal célébrant les sacrements privés et guidant la vie spirituelle du souverain."
+ capellania_chantre_principal:0 "Chantre principal"
+ capellania_chantre_principal_desc:0 "Chanteur principal de la cour, représentant le prestige dynastique lors des grands offices."
+ capellania_gardien_du_tresor:0 "Gardien du trésor"
+ capellania_gardien_du_tresor_desc:0 "Supervise les ornements sacrés, les reliquaires, les livres et les biens liturgiques mobiles."
+ 
+ # Decisions Localization
+ capellania_found_chapel_title:0 "Fonder une Chapelle de Cour"
+ capellania_found_chapel_desc:0 "Établir un lieu de culte et de représentation dynastique à la cour. Cela lance le processus de fondation."
+ capellania_found_chapel_confirm:0 "Lancer la fondation"
+ capellania_open_chapel_title:0 "Gérer la Chapelle de Cour"
+ capellania_open_chapel_desc:0 "Ouvrir ou fermer le tableau de bord de la chapelle de cour."
+ capellania_open_chapel_confirm:0 "Afficher/Masquer"
+ 
+ # Events Localization
+ capellania_found_events.0001.t:0 "Fondation de la Chapelle : Dédicace"
+ capellania_found_events.0001.d:0 "Les fondations de notre nouvelle chapelle de cour sont prêtes. À quelle figure sainte ou patron céleste devons-nous dédier cet espace sacré ?"
+ capellania_found_events.0001.opt_notre_dame:0 "Dédier à Notre-Dame (La Vierge Marie)"
+ capellania_found_events.0001.opt_saint_michel:0 "Dédier à Saint-Michel (Patron des chevaliers)"
+ capellania_found_events.0001.opt_saint_martin:0 "Dédier à Saint-Martin (Patron de la charité)"
+ 
+ capellania_found_events.0002.t:0 "Fondation de la Chapelle : Dotation"
+ capellania_found_events.0002.d:0 "Une chapelle ne peut fonctionner uniquement par la prière. Nous devons allouer une dotation durable pour financer les salaires, livres et entretien liturgique."
+ capellania_found_events.0002.opt_low:0 "Allouer une dotation modeste"
+ capellania_found_events.0002.opt_med:0 "Allouer une dotation moyenne"
+ capellania_found_events.0002.opt_high:0 "Allouer une dotation prestigieuse et importante"
+ 
+ capellania_found_events.0003.t:0 "Fondation de la Chapelle : Autorisation Canonique"
+ capellania_found_events.0003.d:0 "Enfin, comment devons-nous nous accorder avec l'évêque ? Demanderons-nous une licence canonique régulière, ou procéderons-nous à une fondation clandestine pour garder le contrôle ?"
+ capellania_found_events.0003.opt_regular:0 "Demander l'approbation épiscopale (Régulier)"
+ capellania_found_events.0003.opt_clandestine:0 "Bâtir sans autorisation (Clandestin)"
+ 
+ capellania.found_success.title:0 "Chapelle Fondée"
+ capellania.found_success.desc:0 "Notre chapelle de cour a été fondée canoniquement et est désormais active !"
+ capellania.found_clandestine.title:0 "Chapelle Clandestine Bâtie"
+ capellania.found_clandestine.desc:0 "L'oratoire privé est achevé en secret. Le clergé local nous regarde avec méfiance."

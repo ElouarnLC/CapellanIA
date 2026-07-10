@@ -1,0 +1,94 @@
+l_english:
+ CAPELLANIA_WINDOW_TITLE:0 "Court Chapel Administration - CapellanIA"
+ CAPELLANIA_SLOT_VITRAUX_NAME:0 "Stained Glass"
+ CAPELLANIA_SLOT_AUTEL_NAME:0 "Altar"
+ CAPELLANIA_SLOT_TOMBEAUX_NAME:0 "Tombs"
+ CAPELLANIA_SLOT_MOBILIER_NAME:0 "Furniture"
+ 
+ CAPELLANIA_UPGRADE_NONE:0 "None"
+ CAPELLANIA_UPGRADE_BASIC:0 "Basic"
+ CAPELLANIA_UPGRADE_DYNASTIC:0 "Dynastic Cycle"
+ CAPELLANIA_UPGRADE_FLEMISH:0 "Flemish Sculpted Retable"
+ CAPELLANIA_UPGRADE_SOLENNEL:0 "Solemn Mausoleum"
+ CAPELLANIA_UPGRADE_COMPLET:0 "Complete Liturgical Suite"
+ 
+ CAPELLANIA_PRESTIGE_LABEL:0 "Chapel Prestige"
+ CAPELLANIA_CAPACITY_LABEL:0 "Liturgical Capacity"
+ CAPELLANIA_DISCIPLINE_LABEL:0 "Personnel Discipline"
+ CAPELLANIA_CONFORMITY_LABEL:0 "Canon Conformity"
+ 
+ CAPELLANIA_DETAIL_PANEL_HEADER:0 "Aménagement Details"
+ CAPELLANIA_SELECT_SLOT_INSTRUCTION:0 "Select an area in the chapel drawing to manage its layout and decorative projects."
+ 
+ CAPELLANIA_SLOT_AUTEL_DETAIL_DESC:0 "The altar is the theological heart of the chapel. Investing in a Flemish Sculpted Retable (145 Gold) adds significant prestige (+15) but carries a 15% risk of structural delay."
+ CAPELLANIA_ORDER_RETABLE:0 "Order Flemish Retable (145 Gold)"
+ 
+ CAPELLANIA_SLOT_VITRAUX_DETAIL_DESC:0 "Stained glass filters divine light. Ordering a custom Dynastic Cycle (120 Gold) tells the history of your lineage, granting prestige (+10) but carrying a 10% risk of transport breakage."
+ CAPELLANIA_ORDER_VITRAUX:0 "Order Stained Glass (120 Gold)"
+ 
+ CAPELLANIA_SLOT_TOMBEAUX_DETAIL_DESC:0 "Tombs commemorate the ancestors. Creating a Solemn Mausoleum (160 Gold) increases prestige (+20) but carries a 20% risk of masonry delay."
+ CAPELLANIA_ORDER_TOMBEAUX:0 "Order Mausoleum (160 Gold)"
+ 
+ CAPELLANIA_SLOT_MOBILIER_DETAIL_DESC:0 "Liturgical furniture hosts the staff and sacred books. Procuring a Complete Liturgical Suite (100 Gold) increases capacity/prestige (+10) but carries a 5% risk of craftsmanship delays."
+ CAPELLANIA_ORDER_MOBILIER:0 "Order Furniture (100 Gold)"
+ 
+ capellania.retable_success.title:0 "Retable Completed"
+ capellania.retable_success.desc:0 "The Flemish Sculpted Retable is successfully finished and consecrated!"
+ capellania.retable_fail.title:0 "Construction Delayed"
+ capellania.retable_fail.desc:0 "Precious oak panels were damaged. A basic altar has been installed instead."
+ 
+ capellania.vitraux_success.title:0 "Stained Glass Installed"
+ capellania.vitraux_success.desc:0 "The windows shine with dynastic heraldry and biblical cycles!"
+ capellania.vitraux_fail.title:0 "Glass Shattered"
+ capellania.vitraux_fail.desc:0 "The artisan's wagon overturned, breaking the delicate panels. Ordinary glass is put up."
+ 
+ capellania.tombeaux_success.title:0 "Mausoleum Erected"
+ capellania.tombeaux_success.desc:0 "Your ancestors' tombs have been majestically sculpted in fine white stone."
+ capellania.tombeaux_fail.title:0 "Masonry Dispute"
+ capellania.tombeaux_fail.desc:0 "A strike by the local builders delayed the construction. Baseline graves remain."
+ 
+ capellania.mobilier_success.title:0 "Furniture Delivered"
+ capellania.mobilier_success.desc:0 "Carved oak stalls, a choir lectern, and chest are successfully installed."
+ capellania.mobilier_fail.title:0 "Carpentry Defect"
+ capellania.mobilier_fail.desc:0 "The wood warped in the damp chapel, requiring repairs. Basic seating is used."
+ 
+ # Court Positions Localization
+ capellania_maitre_de_chapelle:0 "Maître de chapelle"
+ capellania_maitre_de_chapelle_desc:0 "Responsible for coordinating the choir, liturgy, and musical programs of the court."
+ capellania_premier_chapelain:0 "Premier chapelain"
+ capellania_premier_chapelain_desc:0 "The principal priest conducting private sacraments and guiding the sovereign's spiritual life."
+ capellania_chantre_principal:0 "Chantre principal"
+ capellania_chantre_principal_desc:0 "Leading singer of the court, representing dynastic prestige during high offices."
+ capellania_gardien_du_tresor:0 "Gardien du trésor"
+ capellania_gardien_du_tresor_desc:0 "Oversees the sacred ornaments, reliquaries, books, and mobile liturgical assets."
+ 
+ # Decisions Localization
+ capellania_found_chapel_title:0 "Found a Court Chapel"
+ capellania_found_chapel_desc:0 "Establish a dedicated place of worship and dynastic representation at court. This starts the foundation process."
+ capellania_found_chapel_confirm:0 "Initiate Foundation"
+ capellania_open_chapel_title:0 "Manage Court Chapel"
+ capellania_open_chapel_desc:0 "Open or close the administration dashboard for our court chapel."
+ capellania_open_chapel_confirm:0 "Toggle Window"
+ 
+ # Events Localization
+ capellania_found_events.0001.t:0 "Founding the Chapel: Dedication"
+ capellania_found_events.0001.d:0 "The foundation stones of our new court chapel have been prepared. Before construction begins, to which patron saint or holy figure should we dedicate this sacred space?"
+ capellania_found_events.0001.opt_notre_dame:0 "Dedicate to Notre-Dame (The Virgin Mary)"
+ capellania_found_events.0001.opt_saint_michel:0 "Dedicate to Saint-Michel (Patron of Knights)"
+ capellania_found_events.0001.opt_saint_martin:0 "Dedicate to Saint-Martin (Patron of Charity)"
+ 
+ capellania_found_events.0002.t:0 "Founding the Chapel: Endowment"
+ capellania_found_events.0002.d:0 "A chapel cannot operate on prayers alone. We must establish a lasting endowment (dotation) to pay for salaries, books, and liturgical maintenance."
+ capellania_found_events.0002.opt_low:0 "Provide a Low Endowment"
+ capellania_found_events.0002.opt_med:0 "Provide a Moderate Endowment"
+ capellania_found_events.0002.opt_high:0 "Provide a High, Prestigious Endowment"
+ 
+ capellania_found_events.0003.t:0 "Founding the Chapel: Canonical Status"
+ capellania_found_events.0003.d:0 "Lastly, we must address the local bishop. Will we request a formal canonical license, or proceed with a clandestine construction to keep absolute control?"
+ capellania_found_events.0003.opt_regular:0 "Seek Bishop's Approval (Regular)"
+ capellania_found_events.0003.opt_clandestine:0 "Build Without Permission (Clandestine)"
+ 
+ capellania.found_success.title:0 "Chapel Founded"
+ capellania.found_success.desc:0 "Our court chapel has been canonically founded and is now active!"
+ capellania.found_clandestine.title:0 "Clandestine Chapel Built"
+ capellania.found_clandestine.desc:0 "The private oratory is finished in secret. The local clergy looks upon us with suspicion."

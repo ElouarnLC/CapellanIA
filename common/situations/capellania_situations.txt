@@ -1,0 +1,65 @@
+# CapellanIA: Custom Parish Conflict Situation
+# Target Scope: Character (Sovereign)
+
+capellania_conflit_paroissial = {
+	type = linear
+	
+	stages = {
+		capellania_stage_empietement
+		capellania_stage_protestation
+		capellania_stage_enquete
+		capellania_stage_arbitrage
+		capellania_stage_issue
+	}
+	
+	progression = {
+		value = character_variable:chapel_conflict_tension
+	}
+	
+	on_start = {
+		set_variable = { name = chapel_conflict_tension value = 20 }
+		set_variable = { name = chapel_conflict_support value = 50 }
+		set_variable = { name = chapel_conflict_influence value = 50 }
+	}
+	
+	on_complete = {
+		if = {
+			limit = {
+				compare_value = {
+					value = character_variable:chapel_conflict_support
+					op = >=
+					compare_to = 70
+				}
+			}
+			# Permanent Privilege
+			change_variable = { name = chapel_conformity change = 20 }
+			change_variable = { name = chapel_prestige change = 15 }
+			remove_variable = chapel_conflict_tension
+			remove_variable = chapel_conflict_support
+			remove_variable = chapel_conflict_influence
+		}
+		else_if = {
+			limit = {
+				compare_value = {
+					value = character_variable:chapel_conflict_tension
+					op = >=
+					compare_to = 80
+				}
+			}
+			# Interdict on chapel
+			change_variable = { name = chapel_conformity change = -30 }
+			change_variable = { name = chapel_discipline change = -20 }
+			remove_variable = chapel_conflict_tension
+			remove_variable = chapel_conflict_support
+			remove_variable = chapel_conflict_influence
+		}
+		else = {
+			# Compromise
+			change_variable = { name = chapel_conformity change = 5 }
+			pay_short_term_gold_cost = 50
+			remove_variable = chapel_conflict_tension
+			remove_variable = chapel_conflict_support
+			remove_variable = chapel_conflict_influence
+		}
+	}
+}

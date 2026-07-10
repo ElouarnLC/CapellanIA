@@ -1,0 +1,165 @@
+# CapellanIA: Court Positions Setup
+
+capellania_maitre_de_chapelle = {
+	max_amount = 1
+	category = court_position_category_royal
+	
+	opinion = {
+		opinion_base = 15
+	}
+	
+	valid_character = {
+		is_adult = yes
+		is_landed = no
+		is_clergy = yes
+		is_pool_character = no
+	}
+	
+	aptitude = {
+		value = learning
+		
+		modifier = {
+			add = 5
+			has_trait = theologian
+		}
+		modifier = {
+			add = 3
+			has_trait = poet
+		}
+		modifier = {
+			add = 5
+			has_trait = scholar
+		}
+		modifier = {
+			add = -3
+			has_trait = cynical
+		}
+	}
+	
+	salary = {
+		value = 0.5
+	}
+	
+	employer_modifier = {
+		monthly_piety = 0.3
+		court_grandeur_gain_mult = 0.05
+	}
+}
+
+capellania_premier_chapelain = {
+	max_amount = 1
+	category = court_position_category_royal
+	
+	opinion = {
+		opinion_base = 10
+	}
+	
+	valid_character = {
+		is_adult = yes
+		is_landed = no
+		is_clergy = yes
+		is_pool_character = no
+	}
+	
+	aptitude = {
+		value = learning
+		
+		modifier = {
+			add = 5
+			has_trait = theologian
+		}
+		modifier = {
+			add = 4
+			has_trait = zealous
+		}
+		modifier = {
+			add = -4
+			has_trait = cynical
+		}
+	}
+	
+	salary = {
+		value = 0.3
+	}
+	
+	employer_modifier = {
+		learning_lifestyle_xp_gain_mult = 0.05
+		monthly_piety = 0.15
+	}
+}
+
+capellania_chantre_principal = {
+	max_amount = 1
+	category = court_position_category_royal
+	
+	opinion = {
+		opinion_base = 10
+	}
+	
+	valid_character = {
+		is_adult = yes
+		is_landed = no
+		is_pool_character = no
+	}
+	
+	aptitude = {
+		value = learning
+		
+		modifier = {
+			add = 10
+			has_trait = poet
+		}
+		modifier = {
+			add = 5
+			has_trait = gregarious
+		}
+	}
+	
+	salary = {
+		value = 0.2
+	}
+	
+	employer_modifier = {
+		monthly_prestige = 0.2
+	}
+}
+
+capellania_gardien_du_tresor = {
+	max_amount = 1
+	category = court_position_category_royal
+	
+	opinion = {
+		opinion_base = 10
+	}
+	
+	valid_character = {
+		is_adult = yes
+		is_landed = no
+		is_pool_character = no
+	}
+	
+	aptitude = {
+		value = stewardship
+		
+		modifier = {
+			add = 5
+			has_trait = honest
+		}
+		modifier = {
+			add = 3
+			has_trait = temperate
+		}
+		modifier = {
+			add = -5
+			has_trait = greedy
+		}
+	}
+	
+	salary = {
+		value = 0.2
+	}
+	
+	employer_modifier = {
+		court_upkeep_mult = -0.05
+	}
+}

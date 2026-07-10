@@ -1,0 +1,93 @@
+# CapellanIA: Core Script Values
+# Target Scope: Character
+
+capellania_prestige_value = {
+	if = {
+		limit = { has_variable = chapel_prestige }
+		value = character_variable:chapel_prestige
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_liturgical_capacity_value = {
+	if = {
+		limit = { has_variable = chapel_liturgical_capacity }
+		value = character_variable:chapel_liturgical_capacity
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_liturgical_load_value = {
+	if = {
+		limit = { has_variable = chapel_liturgical_load }
+		value = character_variable:chapel_liturgical_load
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_discipline_value = {
+	if = {
+		limit = { has_variable = chapel_discipline }
+		value = character_variable:chapel_discipline
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_conformity_value = {
+	if = {
+		limit = { has_variable = chapel_conformity }
+		value = character_variable:chapel_conformity
+	}
+	else = {
+		value = 0
+	}
+}
+
+# Sub-values for Slot Upgrades
+capellania_slot_autel_value = {
+	if = {
+		limit = { has_variable = chapel_slot_autel }
+		value = character_variable:chapel_slot_autel
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_slot_vitraux_value = {
+	if = {
+		limit = { has_variable = chapel_slot_vitraux }
+		value = character_variable:chapel_slot_vitraux
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_slot_tombeaux_value = {
+	if = {
+		limit = { has_variable = chapel_slot_tombeaux }
+		value = character_variable:chapel_slot_tombeaux
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_slot_mobilier_value = {
+	if = {
+		limit = { has_variable = chapel_slot_mobilier }
+		value = character_variable:chapel_slot_mobilier
+	}
+	else = {
+		value = 0
+	}
+}

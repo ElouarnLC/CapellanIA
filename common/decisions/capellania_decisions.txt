@@ -1,0 +1,50 @@
+# CapellanIA: Major and Utility Decisions
+
+capellania_found_chapel = {
+	title = capellania_found_chapel_title
+	desc = capellania_found_chapel_desc
+	confirm_text = capellania_found_chapel_confirm
+	
+	is_shown = {
+		is_adult = yes
+		is_landed = yes
+		not = { has_character_flag = chapel_is_active }
+	}
+	
+	is_valid = {
+		gold >= 150
+	}
+	
+	effect = {
+		pay_short_term_gold_cost = 150
+		
+		# Launch the interactive setup event chain
+		trigger_event = {
+			id = capellania_found_events.0001
+		}
+	}
+}
+
+capellania_open_chapel = {
+	title = capellania_open_chapel_title
+	desc = capellania_open_chapel_desc
+	confirm_text = capellania_open_chapel_confirm
+	
+	is_shown = {
+		has_character_flag = chapel_is_active
+	}
+	
+	is_valid = {
+		is_adult = yes
+	}
+	
+	effect = {
+		if = {
+			limit = { has_character_flag = chapel_window_opened }
+			remove_character_flag = chapel_window_opened
+		}
+		else = {
+			set_character_flag = chapel_window_opened
+		}
+	}
+}

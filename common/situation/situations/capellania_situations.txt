@@ -2,8 +2,7 @@
 # Target Scope: Character (Sovereign)
 
 capellania_conflit_paroissial = {
-	situation_group = capellania_situation_group
-	
+
 	phases = {
 		capellania_stage_empietement = {
 			# Stage 1

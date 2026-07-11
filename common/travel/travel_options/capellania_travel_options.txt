@@ -1,4 +1,4 @@
-# CapellanIA: Travel Options Setup
+﻿# CapellanIA: Travel Options Setup
 
 capellania_travel_light = {
 	can_select = {

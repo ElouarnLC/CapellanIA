@@ -1,8 +1,0 @@
-[18:33:55][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: type, near line: 5" in file: "common/situation/situations/capellania_situations.txt" near line: 5
-[18:33:55][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: stages, near line: 7" in file: "common/situation/situations/capellania_situations.txt" near line: 13
-[18:33:55][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: progression, near line: 15" in file: "common/situation/situations/capellania_situations.txt" near line: 17
-[18:33:55][E][pdx_persistent_reader.cpp:216]: Error: "Unexpected token: on_complete, near line: 25" in file: "common/situation/situations/capellania_situations.txt" near line: 64
-[18:33:56][E][jomini_dynamicdescription.cpp:66]: Unrecognized loc key capellania_found_chapel_tooltip. capellania_found_chapel
-[18:33:56][E][decision_type.cpp:241]: Decision picture capellania_found_chapel missing entries
-[18:33:56][E][jomini_dynamicdescription.cpp:66]: Unrecognized loc key capellania_open_chapel_tooltip. capellania_open_chapel
-[18:33:56][E][decision_type.cpp:241]: Decision picture capellania_open_chapel missing entries

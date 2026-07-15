@@ -25,11 +25,7 @@ capellania_purchase_retable = {
 		has_character_flag = chapel_is_active
 		not = {
 			has_variable = chapel_slot_autel
-			compare_value = {
-				value = var:chapel_slot_autel
-				op = >=
-				compare_to = 2
-			}
+			var:chapel_slot_autel >= 2
 		}
 	}
 	is_valid = {
@@ -67,11 +63,7 @@ capellania_purchase_vitraux = {
 		has_character_flag = chapel_is_active
 		not = {
 			has_variable = chapel_slot_vitraux
-			compare_value = {
-				value = var:chapel_slot_vitraux
-				op = >=
-				compare_to = 2
-			}
+			var:chapel_slot_vitraux >= 2
 		}
 	}
 	is_valid = {
@@ -109,11 +101,7 @@ capellania_purchase_tombeaux = {
 		has_character_flag = chapel_is_active
 		not = {
 			has_variable = chapel_slot_tombeaux
-			compare_value = {
-				value = var:chapel_slot_tombeaux
-				op = >=
-				compare_to = 2
-			}
+			var:chapel_slot_tombeaux >= 2
 		}
 	}
 	is_valid = {
@@ -151,11 +139,7 @@ capellania_purchase_mobilier = {
 		has_character_flag = chapel_is_active
 		not = {
 			has_variable = chapel_slot_mobilier
-			compare_value = {
-				value = var:chapel_slot_mobilier
-				op = >=
-				compare_to = 2
-			}
+			var:chapel_slot_mobilier >= 2
 		}
 	}
 	is_valid = {

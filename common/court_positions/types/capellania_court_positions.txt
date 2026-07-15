@@ -36,9 +36,7 @@ capellania_maitre_de_chapelle = {
 		}
 	}
 	
-	salary = {
-		value = 0.5
-	}
+	salary = 0.5
 	
 	employer_modifier = {
 		monthly_piety = 0.3
@@ -78,9 +76,7 @@ capellania_premier_chapelain = {
 		}
 	}
 	
-	salary = {
-		value = 0.3
-	}
+	salary = 0.3
 	
 	employer_modifier = {
 		learning_lifestyle_xp_gain_mult = 0.05
@@ -115,9 +111,7 @@ capellania_chantre_principal = {
 		}
 	}
 	
-	salary = {
-		value = 0.2
-	}
+	salary = 0.2
 	
 	employer_modifier = {
 		monthly_prestige = 0.2
@@ -155,9 +149,7 @@ capellania_gardien_du_tresor = {
 		}
 	}
 	
-	salary = {
-		value = 0.2
-	}
+	salary = 0.2
 	
 	employer_modifier = {
 		court_upkeep_mult = -0.05

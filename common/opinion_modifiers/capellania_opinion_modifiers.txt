@@ -1,0 +1,13 @@
+﻿# CapellanIA: Opinion Modifiers
+
+# Family resents the suppression of ancestral mass foundations
+capellania_reformed_foundations_opinion = {
+	opinion = -15
+	years = 5
+}
+
+# Family resents the dissolution of the dynastic chapel
+capellania_dissolved_chapel_opinion = {
+	opinion = -10
+	years = 5
+}

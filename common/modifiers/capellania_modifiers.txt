@@ -1,0 +1,80 @@
+﻿# CapellanIA: Static Character Modifiers
+
+# --- Dedication blessings ---
+
+capellania_dedication_notre_dame_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.2
+}
+
+capellania_dedication_saint_michel_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.2
+}
+
+capellania_dedication_saint_martin_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.1
+	clergy_opinion = 5
+}
+
+# --- Founded masses blessing tiers ---
+
+capellania_masses_tier_1_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.3
+}
+
+capellania_masses_tier_2_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.6
+	monthly_prestige = 0.1
+}
+
+capellania_masses_tier_3_modifier = {
+	icon = piety_positive
+	monthly_piety = 1.0
+	monthly_prestige = 0.3
+}
+
+# --- Fictive Masses (liturgical debt) phases ---
+
+capellania_debt_phase_1_modifier = {
+	icon = piety_negative
+	monthly_piety = -0.5
+}
+
+capellania_debt_phase_2_modifier = {
+	icon = piety_negative
+	monthly_piety = -1.0
+	clergy_opinion = -5
+}
+
+capellania_debt_phase_3_modifier = {
+	icon = piety_negative
+	monthly_piety = -1.5
+	monthly_prestige = -0.5
+	clergy_opinion = -10
+}
+
+# --- Jurisdiction outcomes ---
+
+capellania_privilege_modifier = {
+	icon = piety_positive
+	monthly_piety = 0.3
+	clergy_opinion = 5
+}
+
+capellania_interdit_modifier = {
+	icon = piety_negative
+	monthly_piety = -1.0
+	monthly_prestige = -0.3
+	clergy_opinion = -15
+}
+
+# --- Succession ---
+
+capellania_purge_chaos_modifier = {
+	icon = piety_negative
+	monthly_piety = -0.5
+}

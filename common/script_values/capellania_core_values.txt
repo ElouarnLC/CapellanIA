@@ -1,30 +1,12 @@
 ﻿# CapellanIA: Core Script Values
-# Target Scope: Character
+# Target Scope: Character (Sovereign)
+
+# --- Stored stats (0-100 scale) ---
 
 capellania_prestige_value = {
 	if = {
 		limit = { has_variable = chapel_prestige }
 		value = var:chapel_prestige
-	}
-	else = {
-		value = 0
-	}
-}
-
-capellania_liturgical_capacity_value = {
-	if = {
-		limit = { has_variable = chapel_liturgical_capacity }
-		value = var:chapel_liturgical_capacity
-	}
-	else = {
-		value = 0
-	}
-}
-
-capellania_liturgical_load_value = {
-	if = {
-		limit = { has_variable = chapel_liturgical_load }
-		value = var:chapel_liturgical_load
 	}
 	else = {
 		value = 0
@@ -51,7 +33,90 @@ capellania_conformity_value = {
 	}
 }
 
-# Sub-values for Slot Upgrades
+# --- Institution counters ---
+
+capellania_founded_masses_value = {
+	if = {
+		limit = { has_variable = chapel_founded_masses }
+		value = var:chapel_founded_masses
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_books_value = {
+	if = {
+		limit = { has_variable = chapel_books }
+		value = var:chapel_books
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_debt_value = {
+	if = {
+		limit = { has_variable = chapel_liturgical_debt }
+		value = var:chapel_liturgical_debt
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_travel_status_value = {
+	if = {
+		limit = { has_variable = chapel_travel_status }
+		value = var:chapel_travel_status
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_dedication_value = {
+	if = {
+		limit = { has_variable = chapel_dedication }
+		value = var:chapel_dedication
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_canon_status_value = {
+	if = {
+		limit = { has_variable = chapel_canon_status }
+		value = var:chapel_canon_status
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_conflict_stage_value = {
+	if = {
+		limit = { has_variable = chapel_conflict_stage }
+		value = var:chapel_conflict_stage
+	}
+	else = {
+		value = 0
+	}
+}
+
+capellania_privilege_value = {
+	if = {
+		limit = { has_variable = chapel_privilege }
+		value = var:chapel_privilege
+	}
+	else = {
+		value = 0
+	}
+}
+
+# --- Slot upgrade levels ---
+
 capellania_slot_autel_value = {
 	if = {
 		limit = { has_variable = chapel_slot_autel }
@@ -92,23 +157,131 @@ capellania_slot_mobilier_value = {
 	}
 }
 
-# Normalized Percent/Fraction values (0.0 to 1.0) for UI progress bars
+# --- Liturgical Capacity engine ---
+# Capacity = staff + books + furniture + endowment, weakened while the court travels.
+
+capellania_books_capacity_bonus = {
+	value = capellania_books_value
+	multiply = 2
+}
+
+capellania_capacity_total = {
+	value = 4
+	if = {
+		limit = { employs_court_position = capellania_premier_chapelain }
+		add = 4
+	}
+	if = {
+		limit = { employs_court_position = capellania_maitre_de_chapelle }
+		add = 2
+	}
+	if = {
+		limit = { employs_court_position = capellania_chantre_principal }
+		add = 1
+	}
+	if = {
+		limit = { employs_court_position = capellania_gardien_du_tresor }
+		add = 1
+	}
+	add = capellania_books_capacity_bonus
+	add = capellania_slot_mobilier_value
+	if = {
+		limit = {
+			has_variable = chapel_dotation
+			var:chapel_dotation >= 2
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			has_variable = chapel_dotation
+			var:chapel_dotation >= 3
+		}
+		add = 1
+	}
+	# Residence Stability: staff travelling with the sovereign weakens the seat
+	if = {
+		limit = {
+			has_variable = chapel_travel_status
+			var:chapel_travel_status = 2
+		}
+		subtract = 2
+	}
+	if = {
+		limit = {
+			has_variable = chapel_travel_status
+			var:chapel_travel_status = 3
+		}
+		subtract = 4
+	}
+	min = 1
+}
+
+# Load = daily offices (2) + 2 per founded anniversary mass
+capellania_load_total = {
+	value = capellania_founded_masses_value
+	multiply = 2
+	add = 2
+}
+
+capellania_overload_value = {
+	value = capellania_load_total
+	subtract = capellania_capacity_total
+	min = 0
+}
+
+# Fictive Masses ticker phase: 0 = none, 1 = piety decay, 2 = bishop hook, 3 = public scandal
+capellania_debt_phase = {
+	value = 0
+	if = {
+		limit = {
+			has_variable = chapel_liturgical_debt
+			var:chapel_liturgical_debt >= 1
+		}
+		value = 1
+	}
+	if = {
+		limit = {
+			has_variable = chapel_liturgical_debt
+			var:chapel_liturgical_debt >= 3
+		}
+		value = 2
+	}
+	if = {
+		limit = {
+			has_variable = chapel_liturgical_debt
+			var:chapel_liturgical_debt >= 5
+		}
+		value = 3
+	}
+}
+
+# --- Normalized fractions (0.0 - 1.0) for UI progress bars ---
+
 capellania_prestige_percent = {
 	value = capellania_prestige_value
 	divide = 100
-}
-
-capellania_liturgical_capacity_percent = {
-	value = capellania_liturgical_capacity_value
-	divide = 20
+	min = 0
+	max = 1
 }
 
 capellania_discipline_percent = {
 	value = capellania_discipline_value
 	divide = 100
+	min = 0
+	max = 1
 }
 
 capellania_conformity_percent = {
 	value = capellania_conformity_value
 	divide = 100
+	min = 0
+	max = 1
+}
+
+capellania_load_percent = {
+	value = capellania_load_total
+	divide = capellania_capacity_total
+	min = 0
+	max = 1
 }

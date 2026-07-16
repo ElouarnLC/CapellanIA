@@ -1,19 +1,21 @@
 ﻿# CapellanIA: Travel Options Setup
+# Three deployment levels for the itinerant chapel (GDD section 7)
 
 capellania_travel_light = {
 	can_select = {
 		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
 		is_adult = yes
 	}
-	
+
 	cost = {
 		gold = 5
 	}
-	
+
 	on_select = {
 		capellania_set_status_travel_light_effect = yes
 	}
-	
+
 	character_modifier = {
 		piety_gain_mult = 0.02
 	}
@@ -22,17 +24,18 @@ capellania_travel_light = {
 capellania_travel_ordinary = {
 	can_select = {
 		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
 		is_adult = yes
 	}
-	
+
 	cost = {
 		gold = 25
 	}
-	
+
 	on_select = {
 		capellania_set_status_travel_ordinary_effect = yes
 	}
-	
+
 	character_modifier = {
 		piety_gain_mult = 0.05
 		prestige_gain_mult = 0.05
@@ -43,20 +46,22 @@ capellania_travel_ordinary = {
 capellania_travel_solemn = {
 	can_select = {
 		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
 		is_adult = yes
 	}
-	
+
 	cost = {
 		gold = 75
 	}
-	
+
 	on_select = {
 		capellania_set_status_travel_solemn_effect = yes
 	}
-	
+
 	character_modifier = {
 		piety_gain_mult = 0.15
 		prestige_gain_mult = 0.15
+		diplomacy = 2
 		travel_speed = -0.20
 	}
 }

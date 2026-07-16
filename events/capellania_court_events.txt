@@ -1,0 +1,146 @@
+﻿# CapellanIA: Court Life Events (rivalry, artistic commissions)
+namespace = capellania_court
+
+# ------------------------------------------------------------------
+# Precedence Conflict: Master of the Chapel vs First Chaplain
+# ------------------------------------------------------------------
+capellania_court.0001 = {
+	type = character_event
+	title = capellania_court.0001.t
+	desc = capellania_court.0001.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+		employs_court_position = capellania_maitre_de_chapelle
+		employs_court_position = capellania_premier_chapelain
+	}
+
+	# Favour the Master of the Chapel: splendour above all
+	option = {
+		name = capellania_court.0001.opt_maitre
+		add_prestige = 75
+		change_variable = { name = chapel_prestige change = 10 }
+		change_variable = { name = chapel_conformity change = -10 }
+		change_variable = { name = chapel_discipline change = -5 }
+		capellania_clamp_stats_effect = yes
+		capellania_refresh_modifiers_effect = yes
+		ai_chance = { base = 40 }
+	}
+
+	# Favour the First Chaplain: canonical conformity
+	option = {
+		name = capellania_court.0001.opt_premier
+		add_piety = 50
+		change_variable = { name = chapel_conformity change = 15 }
+		change_variable = { name = chapel_prestige change = -5 }
+		capellania_clamp_stats_effect = yes
+		capellania_refresh_modifiers_effect = yes
+		ai_chance = { base = 40 }
+	}
+
+	# Reconcile the two rivals (requires Diplomacy 12)
+	option = {
+		name = capellania_court.0001.opt_reconcile
+		trigger = { diplomacy >= 12 }
+		add_prestige = 25
+		change_variable = { name = chapel_discipline change = 10 }
+		change_variable = { name = chapel_conformity change = 5 }
+		capellania_clamp_stats_effect = yes
+		ai_chance = { base = 20 }
+	}
+}
+
+# ------------------------------------------------------------------
+# Commissioning Liturgical Books: choice of workshop
+# ------------------------------------------------------------------
+capellania_court.0002 = {
+	type = character_event
+	title = capellania_court.0002.t
+	desc = capellania_court.0002.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+		has_variable = chapel_books
+		var:chapel_books < 3
+	}
+
+	# Local workshop: reliable and affordable (60 gold)
+	option = {
+		name = capellania_court.0002.opt_local
+		trigger = { gold >= 60 }
+		remove_short_term_gold = 60
+		change_variable = { name = chapel_books change = 1 }
+		capellania_clamp_stats_effect = yes
+		send_interface_toast = {
+			title = capellania.books_delivered.title
+			desc = capellania.books_delivered.desc
+		}
+		ai_chance = { base = 40 }
+	}
+
+	# Monastic scriptorium: sanctified copies (80 gold)
+	option = {
+		name = capellania_court.0002.opt_monastic
+		trigger = { gold >= 80 }
+		remove_short_term_gold = 80
+		change_variable = { name = chapel_books change = 1 }
+		change_variable = { name = chapel_conformity change = 10 }
+		add_piety = 25
+		capellania_clamp_stats_effect = yes
+		send_interface_toast = {
+			title = capellania.books_delivered.title
+			desc = capellania.books_delivered.desc
+		}
+		ai_chance = { base = 40 }
+	}
+
+	# Famed foreign workshop: Flemish illuminations (120 gold)
+	option = {
+		name = capellania_court.0002.opt_foreign
+		trigger = { gold >= 120 }
+		remove_short_term_gold = 120
+		random_list = {
+			75 = {
+				change_variable = { name = chapel_books change = 2 }
+				change_variable = { name = chapel_prestige change = 10 }
+				add_prestige = 25
+				send_interface_toast = {
+					title = capellania.books_masterwork.title
+					desc = capellania.books_masterwork.desc
+				}
+			}
+			25 = {
+				# Transport accident: part of the shipment is lost
+				change_variable = { name = chapel_books change = 1 }
+				add_stress = 10
+				send_interface_toast = {
+					title = capellania.books_lost.title
+					desc = capellania.books_lost.desc
+				}
+			}
+		}
+		capellania_clamp_stats_effect = yes
+		ai_chance = { base = 20 }
+	}
+
+	# On second thought, not now
+	option = {
+		name = capellania_court.0002.opt_cancel
+		remove_character_flag = chapel_books_cooldown
+		ai_chance = { base = 5 }
+	}
+}

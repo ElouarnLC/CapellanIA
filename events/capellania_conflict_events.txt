@@ -1,0 +1,382 @@
+﻿# CapellanIA: Parish Jurisdiction Conflict (phased "Situation" via events)
+# Emergence -> Tension -> Enquiry -> Outcome (Privilege / Fine / Interdict)
+namespace = capellania_conflict
+
+# ------------------------------------------------------------------
+# Stage 1: The parish priest protests the usurpation of sacraments
+# ------------------------------------------------------------------
+capellania_conflict.0001 = {
+	type = character_event
+	title = capellania_conflict.0001.t
+	desc = capellania_conflict.0001.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = disapproval
+	}
+	right_portrait = {
+		character = scope:capellania_bishop
+		animation = anger
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+	}
+
+	immediate = {
+		capellania_get_bishop_effect = yes
+		set_variable = { name = chapel_conflict_stage value = 1 }
+	}
+
+	# Make honourable amends
+	option = {
+		name = capellania_conflict.0001.opt_a
+		add_prestige = -50
+		change_variable = { name = chapel_conformity change = 10 }
+		set_variable = { name = chapel_conflict_stage value = 0 }
+		capellania_clamp_stats_effect = yes
+		ai_chance = { base = 50 }
+	}
+
+	# Ignore the country priest
+	option = {
+		name = capellania_conflict.0001.opt_b
+		trigger_event = { id = capellania_conflict.0002 days = 90 }
+		ai_chance = { base = 25 }
+	}
+
+	# A discreet gift to the parish (30 gold)
+	option = {
+		name = capellania_conflict.0001.opt_c
+		trigger = { gold >= 30 }
+		remove_short_term_gold = 30
+		random_list = {
+			70 = {
+				change_variable = { name = chapel_conformity change = 5 }
+				set_variable = { name = chapel_conflict_stage value = 0 }
+				capellania_clamp_stats_effect = yes
+				send_interface_toast = {
+					title = capellania.parish_appeased.title
+					desc = capellania.parish_appeased.desc
+				}
+			}
+			30 = {
+				trigger_event = { id = capellania_conflict.0002 days = 60 }
+			}
+		}
+		ai_chance = { base = 25 }
+	}
+}
+
+# ------------------------------------------------------------------
+# Stage 2: The Bishop demands a canonical enquiry
+# ------------------------------------------------------------------
+capellania_conflict.0002 = {
+	type = character_event
+	title = capellania_conflict.0002.t
+	desc = capellania_conflict.0002.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:capellania_bishop
+		animation = disapproval
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+		var:chapel_conflict_stage >= 1
+	}
+
+	immediate = {
+		capellania_get_bishop_effect = yes
+		set_variable = { name = chapel_conflict_stage value = 2 }
+	}
+
+	# Accept the canonical visit
+	option = {
+		name = capellania_conflict.0002.opt_a
+		trigger_event = { id = capellania_conflict.0003 days = 60 }
+		ai_chance = { base = 60 }
+	}
+
+	# Refuse - a dangerous act of defiance
+	option = {
+		name = capellania_conflict.0002.opt_b
+		change_variable = { name = chapel_conformity change = -15 }
+		capellania_clamp_stats_effect = yes
+		random_list = {
+			60 = {
+				trigger_event = { id = capellania_conflict.0004 days = 30 }
+			}
+			40 = {
+				add_prestige = 50
+				set_variable = { name = chapel_conflict_stage value = 0 }
+				send_interface_toast = {
+					title = capellania.bishop_backs_down.title
+					desc = capellania.bishop_backs_down.desc
+				}
+			}
+		}
+		ai_chance = { base = 10 }
+	}
+
+	# Offer wrought gold to the Bishop (100 gold)
+	option = {
+		name = capellania_conflict.0002.opt_c
+		trigger = { gold >= 100 }
+		remove_short_term_gold = 100
+		random_list = {
+			40 = {
+				modifier = {
+					add = 25
+					diplomacy >= 15
+				}
+				modifier = {
+					add = 15
+					diplomacy >= 10
+				}
+				trigger_event = { id = capellania_conflict.0005 days = 30 }
+			}
+			60 = {
+				trigger_event = { id = capellania_conflict.0003 days = 60 }
+			}
+		}
+		ai_chance = { base = 30 }
+	}
+}
+
+# ------------------------------------------------------------------
+# Stage 3: The Canonical Visit
+# ------------------------------------------------------------------
+capellania_conflict.0003 = {
+	type = character_event
+	title = capellania_conflict.0003.t
+	desc = capellania_conflict.0003.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+	right_portrait = {
+		character = scope:capellania_bishop
+		animation = scheme
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+		var:chapel_conflict_stage >= 1
+	}
+
+	immediate = {
+		capellania_get_bishop_effect = yes
+		set_variable = { name = chapel_conflict_stage value = 3 }
+	}
+
+	# Receive the enquirers with dignity
+	option = {
+		name = capellania_conflict.0003.opt_a
+		random_list = {
+			40 = {
+				modifier = {
+					add = 20
+					var:chapel_conformity >= 70
+				}
+				modifier = {
+					add = 15
+					employs_court_position = capellania_premier_chapelain
+				}
+				modifier = {
+					add = 10
+					has_variable = chapel_canon_status
+					var:chapel_canon_status = 1
+				}
+				modifier = {
+					add = 10
+					var:chapel_discipline >= 70
+				}
+				trigger_event = { id = capellania_conflict.0005 days = 15 }
+			}
+			35 = {
+				# A fine and a warning
+				remove_short_term_gold = 50
+				change_variable = { name = chapel_conformity change = 10 }
+				set_variable = { name = chapel_conflict_stage value = 0 }
+				capellania_clamp_stats_effect = yes
+				send_interface_toast = {
+					title = capellania.enquiry_fine.title
+					desc = capellania.enquiry_fine.desc
+				}
+			}
+			25 = {
+				modifier = {
+					add = 20
+					var:chapel_conformity < 40
+				}
+				modifier = {
+					add = 15
+					has_variable = chapel_canon_status
+					var:chapel_canon_status = 2
+				}
+				trigger_event = { id = capellania_conflict.0004 days = 15 }
+			}
+		}
+		ai_chance = { base = 90 }
+	}
+
+	# Bar the doors at the last moment
+	option = {
+		name = capellania_conflict.0003.opt_b
+		random_list = {
+			75 = {
+				trigger_event = { id = capellania_conflict.0004 days = 15 }
+			}
+			25 = {
+				set_variable = { name = chapel_conflict_stage value = 0 }
+				send_interface_toast = {
+					title = capellania.bishop_backs_down.title
+					desc = capellania.bishop_backs_down.desc
+				}
+			}
+		}
+		ai_chance = { base = 10 }
+	}
+}
+
+# ------------------------------------------------------------------
+# Outcome A: The Interdict - forced closure of the chapel
+# ------------------------------------------------------------------
+capellania_conflict.0004 = {
+	type = character_event
+	title = capellania_conflict.0004.t
+	desc = capellania_conflict.0004.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+	right_portrait = {
+		character = scope:capellania_bishop
+		animation = personality_zealous
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+	}
+
+	immediate = {
+		capellania_get_bishop_effect = yes
+		capellania_apply_interdit_effect = yes
+	}
+
+	# We shall submit... for now
+	option = {
+		name = capellania_conflict.0004.opt_a
+		add_stress = 20
+	}
+
+	# Swear to have this Interdict lifted
+	option = {
+		name = capellania_conflict.0004.opt_b
+		add_prestige = 25
+	}
+}
+
+# ------------------------------------------------------------------
+# Outcome B: The Permanent Privilege
+# ------------------------------------------------------------------
+capellania_conflict.0005 = {
+	type = character_event
+	title = capellania_conflict.0005.t
+	desc = capellania_conflict.0005.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:capellania_bishop
+		animation = personality_content
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+	}
+
+	immediate = {
+		capellania_get_bishop_effect = yes
+		set_variable = { name = chapel_conflict_stage value = 0 }
+		set_variable = { name = chapel_privilege value = 1 }
+		change_variable = { name = chapel_conformity change = 20 }
+		capellania_clamp_stats_effect = yes
+		capellania_refresh_modifiers_effect = yes
+	}
+
+	# Celebrate this triumph of our house
+	option = {
+		name = capellania_conflict.0005.opt_a
+		add_prestige = 50
+	}
+
+	# Give thanks in humility
+	option = {
+		name = capellania_conflict.0005.opt_b
+		add_piety = 50
+	}
+}
+
+# ------------------------------------------------------------------
+# Secret Sacraments exposed: the Scandalous Priest
+# ------------------------------------------------------------------
+capellania_conflict.0010 = {
+	type = character_event
+	title = capellania_conflict.0010.t
+	desc = capellania_conflict.0010.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+	}
+
+	immediate = {
+		remove_character_flag = chapel_secret_sacraments
+		change_variable = { name = chapel_conformity change = -20 }
+		change_variable = { name = chapel_prestige change = -10 }
+		change_variable = { name = chapel_liturgical_debt change = 1 }
+		capellania_clamp_stats_effect = yes
+		capellania_refresh_modifiers_effect = yes
+	}
+
+	# Disavow the scandalous priest
+	option = {
+		name = capellania_conflict.0010.opt_a
+		change_variable = { name = chapel_discipline change = -10 }
+		change_variable = { name = chapel_conformity change = 10 }
+		capellania_clamp_stats_effect = yes
+	}
+
+	# Assume responsibility - the coin was worth it
+	option = {
+		name = capellania_conflict.0010.opt_b
+		add_prestige = 25
+		change_variable = { name = chapel_conformity change = -10 }
+		capellania_clamp_stats_effect = yes
+	}
+}

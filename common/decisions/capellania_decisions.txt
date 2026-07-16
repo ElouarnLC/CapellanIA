@@ -5,17 +5,18 @@ capellania_found_chapel = {
 	desc = capellania_found_chapel_desc
 	confirm_text = capellania_found_chapel_confirm
 	ai_check_interval = 0
-	
+
 	is_shown = {
 		is_adult = yes
 		is_landed = yes
 		not = { has_character_flag = chapel_is_active }
+		not = { has_character_flag = chapel_transition_pending }
 	}
-	
+
 	cost = {
-		gold = 150
+		gold = 100
 	}
-	
+
 	effect = {
 		# Launch the interactive setup event chain
 		trigger_event = {
@@ -29,15 +30,15 @@ capellania_open_chapel = {
 	desc = capellania_open_chapel_desc
 	confirm_text = capellania_open_chapel_confirm
 	ai_check_interval = 0
-	
+
 	is_shown = {
 		has_character_flag = chapel_is_active
 	}
-	
+
 	is_valid = {
 		is_adult = yes
 	}
-	
+
 	effect = {
 		if = {
 			limit = { has_character_flag = chapel_window_opened }
@@ -46,5 +47,122 @@ capellania_open_chapel = {
 		else = {
 			add_character_flag = chapel_window_opened
 		}
+	}
+}
+
+# Commission liturgical books from a workshop (raises Liturgical Capacity)
+capellania_order_books = {
+	title = capellania_order_books_title
+	desc = capellania_order_books_desc
+	confirm_text = capellania_order_books_confirm
+	ai_check_interval = 0
+
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+	}
+
+	is_valid = {
+		has_variable = chapel_books
+		var:chapel_books < 3
+		not = { has_character_flag = chapel_books_cooldown }
+		gold >= 60
+	}
+
+	effect = {
+		add_character_flag = { flag = chapel_books_cooldown days = 730 }
+		trigger_event = { id = capellania_court.0002 }
+	}
+}
+
+# Usurp the parish sacraments: celebrate baptisms and weddings in the chapel
+capellania_celebrate_sacraments = {
+	title = capellania_celebrate_sacraments_title
+	desc = capellania_celebrate_sacraments_desc
+	confirm_text = capellania_celebrate_sacraments_confirm
+	ai_check_interval = 0
+
+	cooldown = { years = 5 }
+
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+	}
+
+	effect = {
+		add_prestige = 75
+		dynasty ?= { add_dynasty_prestige = 50 }
+		change_variable = { name = chapel_prestige change = 10 }
+		change_variable = { name = chapel_conformity change = -15 }
+		add_character_flag = { flag = chapel_sacrament_usurpation days = 1825 }
+		capellania_clamp_stats_effect = yes
+		capellania_refresh_modifiers_effect = yes
+		send_interface_toast = {
+			title = capellania.sacraments_celebrated.title
+			desc = capellania.sacraments_celebrated.desc
+		}
+	}
+}
+
+# Allow the staff to sell sacraments in secret (occult gold, scandal risk)
+capellania_enable_secret_sacraments = {
+	title = capellania_enable_secret_sacraments_title
+	desc = capellania_enable_secret_sacraments_desc
+	confirm_text = capellania_enable_secret_sacraments_confirm
+	ai_check_interval = 0
+
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+		not = { has_character_flag = chapel_secret_sacraments }
+	}
+
+	effect = {
+		add_character_flag = chapel_secret_sacraments
+		send_interface_toast = {
+			title = capellania.secret_enabled.title
+			desc = capellania.secret_enabled.desc
+		}
+	}
+}
+
+capellania_disable_secret_sacraments = {
+	title = capellania_disable_secret_sacraments_title
+	desc = capellania_disable_secret_sacraments_desc
+	confirm_text = capellania_disable_secret_sacraments_confirm
+	ai_check_interval = 0
+
+	is_shown = {
+		has_character_flag = chapel_secret_sacraments
+	}
+
+	effect = {
+		remove_character_flag = chapel_secret_sacraments
+		send_interface_toast = {
+			title = capellania.secret_disabled.title
+			desc = capellania.secret_disabled.desc
+		}
+	}
+}
+
+# Negotiate the lifting of the Interdict
+capellania_lift_interdit = {
+	title = capellania_lift_interdit_title
+	desc = capellania_lift_interdit_desc
+	confirm_text = capellania_lift_interdit_confirm
+	ai_check_interval = 0
+
+	is_shown = {
+		has_character_flag = chapel_is_active
+		has_character_flag = chapel_interdit
+	}
+
+	cost = {
+		gold = 150
+		piety = 100
+	}
+
+	effect = {
+		capellania_lift_interdit_effect = yes
 	}
 }

@@ -18,6 +18,10 @@ capellania_close_window = {
 	}
 }
 
+# ------------------------------------------------------------------
+# Fixed Decor commissions (Autel / Vitraux / Tombeaux / Mobilier)
+# ------------------------------------------------------------------
+
 # 1. AUTEL PURCHASE LOGIC (Flemish Sculpted Retable)
 capellania_purchase_retable = {
 	scope = character
@@ -32,27 +36,28 @@ capellania_purchase_retable = {
 		gold >= 145
 	}
 	effect = {
-		remove_gold = 145
-		
+		remove_short_term_gold = 145
+
 		# Historical uncertainty roll: 85% success, 15% failure
-		random = {
-			chance = 85
-			change_variable = { name = chapel_prestige change = 15 }
-			set_variable = { name = chapel_slot_autel value = 2 }
-			send_interface_toast = {
-				title = capellania.retable_success.title
-				desc = capellania.retable_success.desc
+		random_list = {
+			85 = {
+				change_variable = { name = chapel_prestige change = 15 }
+				set_variable = { name = chapel_slot_autel value = 2 }
+				send_interface_toast = {
+					title = capellania.retable_success.title
+					desc = capellania.retable_success.desc
+				}
+			}
+			15 = {
+				change_variable = { name = chapel_prestige change = -5 }
+				set_variable = { name = chapel_slot_autel value = 1 }
+				send_interface_toast = {
+					title = capellania.retable_fail.title
+					desc = capellania.retable_fail.desc
+				}
 			}
 		}
-		random = {
-			chance = 15
-			change_variable = { name = chapel_prestige change = -5 }
-			set_variable = { name = chapel_slot_autel value = 1 }
-			send_interface_toast = {
-				title = capellania.retable_fail.title
-				desc = capellania.retable_fail.desc
-			}
-		}
+		capellania_clamp_stats_effect = yes
 	}
 }
 
@@ -70,27 +75,28 @@ capellania_purchase_vitraux = {
 		gold >= 120
 	}
 	effect = {
-		remove_gold = 120
-		
+		remove_short_term_gold = 120
+
 		# Historical uncertainty roll: 90% success, 10% failure
-		random = {
-			chance = 90
-			change_variable = { name = chapel_prestige change = 10 }
-			set_variable = { name = chapel_slot_vitraux value = 2 }
-			send_interface_toast = {
-				title = capellania.vitraux_success.title
-				desc = capellania.vitraux_success.desc
+		random_list = {
+			90 = {
+				change_variable = { name = chapel_prestige change = 10 }
+				set_variable = { name = chapel_slot_vitraux value = 2 }
+				send_interface_toast = {
+					title = capellania.vitraux_success.title
+					desc = capellania.vitraux_success.desc
+				}
+			}
+			10 = {
+				change_variable = { name = chapel_prestige change = -3 }
+				set_variable = { name = chapel_slot_vitraux value = 1 }
+				send_interface_toast = {
+					title = capellania.vitraux_fail.title
+					desc = capellania.vitraux_fail.desc
+				}
 			}
 		}
-		random = {
-			chance = 10
-			change_variable = { name = chapel_prestige change = -3 }
-			set_variable = { name = chapel_slot_vitraux value = 1 }
-			send_interface_toast = {
-				title = capellania.vitraux_fail.title
-				desc = capellania.vitraux_fail.desc
-			}
-		}
+		capellania_clamp_stats_effect = yes
 	}
 }
 
@@ -108,27 +114,28 @@ capellania_purchase_tombeaux = {
 		gold >= 160
 	}
 	effect = {
-		remove_gold = 160
-		
+		remove_short_term_gold = 160
+
 		# Historical uncertainty roll: 80% success, 20% failure
-		random = {
-			chance = 80
-			change_variable = { name = chapel_prestige change = 20 }
-			set_variable = { name = chapel_slot_tombeaux value = 2 }
-			send_interface_toast = {
-				title = capellania.tombeaux_success.title
-				desc = capellania.tombeaux_success.desc
+		random_list = {
+			80 = {
+				change_variable = { name = chapel_prestige change = 20 }
+				set_variable = { name = chapel_slot_tombeaux value = 2 }
+				send_interface_toast = {
+					title = capellania.tombeaux_success.title
+					desc = capellania.tombeaux_success.desc
+				}
+			}
+			20 = {
+				change_variable = { name = chapel_prestige change = -6 }
+				set_variable = { name = chapel_slot_tombeaux value = 1 }
+				send_interface_toast = {
+					title = capellania.tombeaux_fail.title
+					desc = capellania.tombeaux_fail.desc
+				}
 			}
 		}
-		random = {
-			chance = 20
-			change_variable = { name = chapel_prestige change = -6 }
-			set_variable = { name = chapel_slot_tombeaux value = 1 }
-			send_interface_toast = {
-				title = capellania.tombeaux_fail.title
-				desc = capellania.tombeaux_fail.desc
-			}
-		}
+		capellania_clamp_stats_effect = yes
 	}
 }
 
@@ -146,26 +153,101 @@ capellania_purchase_mobilier = {
 		gold >= 100
 	}
 	effect = {
-		remove_gold = 100
-		
+		remove_short_term_gold = 100
+
 		# Historical uncertainty roll: 95% success, 5% failure
-		random = {
-			chance = 95
-			change_variable = { name = chapel_prestige change = 10 }
-			set_variable = { name = chapel_slot_mobilier value = 2 }
-			send_interface_toast = {
-				title = capellania.mobilier_success.title
-				desc = capellania.mobilier_success.desc
+		random_list = {
+			95 = {
+				change_variable = { name = chapel_prestige change = 10 }
+				set_variable = { name = chapel_slot_mobilier value = 2 }
+				send_interface_toast = {
+					title = capellania.mobilier_success.title
+					desc = capellania.mobilier_success.desc
+				}
+			}
+			5 = {
+				change_variable = { name = chapel_prestige change = -2 }
+				set_variable = { name = chapel_slot_mobilier value = 1 }
+				send_interface_toast = {
+					title = capellania.mobilier_fail.title
+					desc = capellania.mobilier_fail.desc
+				}
 			}
 		}
-		random = {
-			chance = 5
-			change_variable = { name = chapel_prestige change = -2 }
-			set_variable = { name = chapel_slot_mobilier value = 1 }
-			send_interface_toast = {
-				title = capellania.mobilier_fail.title
-				desc = capellania.mobilier_fail.desc
-			}
-		}
+		capellania_clamp_stats_effect = yes
+	}
+}
+
+# ------------------------------------------------------------------
+# Founded Masses management (dashboard buttons)
+# ------------------------------------------------------------------
+
+capellania_found_mass = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+	}
+	is_valid = {
+		gold >= 40
+	}
+	effect = {
+		capellania_found_mass_effect = yes
+	}
+}
+
+capellania_reform_mass = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_is_active
+	}
+	is_valid = {
+		has_variable = chapel_founded_masses
+		var:chapel_founded_masses >= 1
+	}
+	effect = {
+		capellania_reform_mass_effect = yes
+	}
+}
+
+# ------------------------------------------------------------------
+# Liturgical books commission (dashboard button)
+# ------------------------------------------------------------------
+
+capellania_order_books_gui = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_is_active
+		not = { has_character_flag = chapel_interdit }
+	}
+	is_valid = {
+		gold >= 60
+		has_variable = chapel_books
+		var:chapel_books < 3
+		not = { has_character_flag = chapel_books_cooldown }
+	}
+	effect = {
+		add_character_flag = { flag = chapel_books_cooldown days = 730 }
+		trigger_event = { id = capellania_court.0002 }
+	}
+}
+
+# ------------------------------------------------------------------
+# Interdict lifting (dashboard button)
+# ------------------------------------------------------------------
+
+capellania_lift_interdit_gui = {
+	scope = character
+	is_shown = {
+		has_character_flag = chapel_interdit
+	}
+	is_valid = {
+		gold >= 150
+		piety >= 100
+	}
+	effect = {
+		remove_short_term_gold = 150
+		add_piety = -100
+		capellania_lift_interdit_effect = yes
 	}
 }

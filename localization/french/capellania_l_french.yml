@@ -4,64 +4,129 @@
  CAPELLANIA_SLOT_AUTEL_NAME:0 "Autel"
  CAPELLANIA_SLOT_TOMBEAUX_NAME:0 "Tombeaux"
  CAPELLANIA_SLOT_MOBILIER_NAME:0 "Mobilier"
- 
+
  CAPELLANIA_UPGRADE_NONE:0 "Aucun"
  CAPELLANIA_UPGRADE_BASIC:0 "Standard"
  CAPELLANIA_UPGRADE_DYNASTIC:0 "Cycle Dynastique"
  CAPELLANIA_UPGRADE_FLEMISH:0 "Retable Sculpté Flamand"
  CAPELLANIA_UPGRADE_SOLENNEL:0 "Mausolée Solennel"
  CAPELLANIA_UPGRADE_COMPLET:0 "Mobilier Liturgique Complet"
- 
+
  CAPELLANIA_PRESTIGE_LABEL:0 "Prestige de la Chapelle"
  CAPELLANIA_CAPACITY_LABEL:0 "Capacité Liturgique"
  CAPELLANIA_DISCIPLINE_LABEL:0 "Discipline du Personnel"
  CAPELLANIA_CONFORMITY_LABEL:0 "Conformité Canonique"
- 
+
+ CAPELLANIA_LOAD_LABEL:0 "Charge Liturgique"
+ CAPELLANIA_LOAD_SEPARATOR:0 "/"
+ CAPELLANIA_MASSES_LABEL:0 "Messes Fondées :"
+ CAPELLANIA_BOOKS_LABEL:0 "Livres Liturgiques :"
+ CAPELLANIA_FOUND_MASS_BUTTON:0 "Fonder une Messe (40 Or)"
+ CAPELLANIA_REFORM_MASS_BUTTON:0 "Réformer une Fondation"
+ CAPELLANIA_ORDER_BOOKS_BUTTON:0 "Commander des Livres (60+ Or)"
+ CAPELLANIA_LIFT_INTERDIT_BUTTON:0 "Négocier l'Interdit (150 Or, 100 Piété)"
+
+ CAPELLANIA_DEBT_NONE:0 "Les offices sont honorés. Aucune dette liturgique."
+ CAPELLANIA_DEBT_PHASE1:0 "Messes Fictives ! Le personnel est débordé ; la piété s'érode."
+ CAPELLANIA_DEBT_PHASE2:0 "Négligence Sacrée : l'Évêque a eu vent de nos manquements."
+ CAPELLANIA_DEBT_PHASE3:0 "Scandale Public ! Les messes fictives déshonorent notre dynastie."
+
+ CAPELLANIA_STATUS_HEADER:0 "État de l'Institution"
+ CAPELLANIA_DEDICATION_1:0 "Dédiée à Notre-Dame"
+ CAPELLANIA_DEDICATION_2:0 "Dédiée à Saint-Michel"
+ CAPELLANIA_DEDICATION_3:0 "Dédiée à Saint-Martin"
+ CAPELLANIA_CANON_REGULAR:0 "Licence canonique accordée"
+ CAPELLANIA_CANON_CLANDESTINE:0 "Fondation clandestine"
+ CAPELLANIA_TRAVEL_STATUS_0:0 "Chapelle en résidence"
+ CAPELLANIA_TRAVEL_STATUS_1:0 "En voyage : suite légère"
+ CAPELLANIA_TRAVEL_STATUS_2:0 "En voyage : suite ordinaire (siège affaibli)"
+ CAPELLANIA_TRAVEL_STATUS_3:0 "En voyage : suite solennelle (siège affaibli)"
+ CAPELLANIA_CONFLICT_STAGE_1:0 "Le curé paroissial proteste contre notre chapelle"
+ CAPELLANIA_CONFLICT_STAGE_2:0 "L'Évêque exige une enquête canonique"
+ CAPELLANIA_CONFLICT_STAGE_3:0 "Une visite canonique est en cours"
+ CAPELLANIA_PRIVILEGE_ACTIVE:0 "Privilège sacramentel permanent acquis"
+ CAPELLANIA_INTERDIT_BANNER:0 "LA CHAPELLE EST FRAPPÉE D'INTERDIT. Tous les offices et bénéfices sont suspendus jusqu'à la levée de la fermeture."
+
  CAPELLANIA_DETAIL_PANEL_HEADER:0 "Détails de l'Aménagement"
  CAPELLANIA_SELECT_SLOT_INSTRUCTION:0 "Sélectionnez une zone sur le dessin de la chapelle pour gérer son aménagement et ses projets de décoration."
- 
+
  CAPELLANIA_SLOT_AUTEL_DETAIL_DESC:0 "L'autel est le cœur théologique de la chapelle. Investir dans un retable sculpté flamand (145 Or) apporte un prestige important (+15) mais comporte un risque de 15% de retard de livraison."
  CAPELLANIA_ORDER_RETABLE:0 "Commander le Retable Flamand (145 Or)"
- 
+
  CAPELLANIA_SLOT_VITRAUX_DETAIL_DESC:0 "Les vitraux filtrent la lumière divine. Commander un Cycle Dynastique sur mesure (120 Or) raconte l'histoire de votre lignée, accordant du prestige (+10) mais comportant un risque de 10% de casse pendant le transport."
  CAPELLANIA_ORDER_VITRAUX:0 "Commander les Vitraux (120 Or)"
- 
+
  CAPELLANIA_SLOT_TOMBEAUX_DETAIL_DESC:0 "Les tombeaux commémorent les ancêtres. Créer un Mausolée Solennel (160 Or) augmente le prestige (+20) mais comporte un risque de 20% de retard de maçonnerie."
  CAPELLANIA_ORDER_TOMBEAUX:0 "Commander le Mausolée (160 Or)"
- 
+
  CAPELLANIA_SLOT_MOBILIER_DETAIL_DESC:0 "Le mobilier liturgique accueille le personnel et les livres sacrés. Se procurer un Mobilier Liturgique Complet (100 Or) augmente la capacité et le prestige (+10) mais comporte un risque de 5% de retard de fabrication."
  CAPELLANIA_ORDER_MOBILIER:0 "Commander le Mobilier (100 Or)"
- 
+
  capellania.retable_success.title:0 "Retable Achevé"
  capellania.retable_success.desc:0 "Le retable sculpté flamand a été achevé et consacré avec succès !"
  capellania.retable_fail.title:0 "Construction Retardée"
  capellania.retable_fail.desc:0 "Les précieux panneaux de chêne ont été endommagés. Un autel de base a été installé à la place."
- 
+
  capellania.vitraux_success.title:0 "Vitraux Installés"
  capellania.vitraux_success.desc:0 "Les fenêtres brillent désormais d'armoiries dynastiques et de scènes bibliques !"
  capellania.vitraux_fail.title:0 "Verre Brisé"
  capellania.vitraux_fail.desc:0 "Le chariot de l'artisan a versé, brisant les panneaux délicats. Des vitres ordinaires sont posées."
- 
+
  capellania.tombeaux_success.title:0 "Mausolée Érigé"
  capellania.tombeaux_success.desc:0 "Les tombeaux de vos ancêtres ont été majestueusement sculptés dans une pierre blanche et fine."
  capellania.tombeaux_fail.title:0 "Conflit de Maçonnerie"
  capellania.tombeaux_fail.desc:0 "Une grève des maçons locaux a retardé la construction. Les tombes de base demeurent."
- 
+
  capellania.mobilier_success.title:0 "Mobilier Livré"
  capellania.mobilier_success.desc:0 "Les stalles en chêne sculpté, le lutrin du chœur et le coffre sont installés avec succès."
  capellania.mobilier_fail.title:0 "Défaut de Menuiserie"
  capellania.mobilier_fail.desc:0 "Le bois a travaillé dans l'humidité de la chapelle, nécessitant des réparations. Des bancs basiques sont installés."
- 
+
+ capellania.mass_founded.title:0 "Messe Anniversaire Fondée"
+ capellania.mass_founded.desc:0 "Une messe perpétuelle a été fondée pour le salut de notre lignée. Les chapelains en portent désormais la charge chaque année."
+ capellania.mass_reformed.title:0 "Fondation Réformée"
+ capellania.mass_reformed.desc:0 "Une fondation de messe ancestrale a été supprimée. La famille murmure contre cette impiété."
+ capellania.debt_started.title:0 "Dette Liturgique"
+ capellania.debt_started.desc:0 "Les obligations dépassent ce que notre personnel peut honorer. Des messes fictives s'inscrivent dans les registres."
+ capellania.debt_cleared.title:0 "Registres en Ordre"
+ capellania.debt_cleared.desc:0 "Tous les offices fondés sont de nouveau dûment célébrés."
+ capellania.books_delivered.title:0 "Livres Livrés"
+ capellania.books_delivered.desc:0 "De nouveaux volumes liturgiques rejoignent la bibliothèque de la chapelle et allègent la charge des offices."
+ capellania.books_masterwork.title:0 "Enluminures Magistrales"
+ capellania.books_masterwork.desc:0 "L'atelier étranger a livré des bréviaires d'une beauté stupéfiante. Toute la cour en parle."
+ capellania.books_lost.title:0 "Cargaison Endommagée"
+ capellania.books_lost.desc:0 "Une partie de la précieuse cargaison a été ruinée en chemin. Seuls quelques volumes sont arrivés intacts."
+ capellania.theft_thwarted.title:0 "Vol Déjoué"
+ capellania.theft_thwarted.desc:0 "Des brigands convoitaient le trésor itinérant, mais le Gardien du trésor l'avait mis sous clef et bonne garde."
+ capellania.theft_loss.title:0 "Trésor Pillé"
+ capellania.theft_loss.desc:0 "Une embuscade sur la route ! Une partie du trésor liturgique a été dérobée."
+ capellania.residence_unstable.title:0 "Messes Bâclées au Siège"
+ capellania.residence_unstable.desc:0 "Les meilleurs clercs étant sur les routes, les messes fondées de la résidence ont été expédiées à la hâte."
+ capellania.parish_appeased.title:0 "Paroisse Apaisée"
+ capellania.parish_appeased.desc:0 "Votre don a soulagé l'orgueil blessé du curé. L'affaire n'ira pas plus loin."
+ capellania.bishop_backs_down.title:0 "L'Évêque Cède"
+ capellania.bishop_backs_down.desc:0 "Devant votre rang, la cour épiscopale abandonne discrètement l'affaire."
+ capellania.enquiry_fine.title:0 "Amende et Avertissement"
+ capellania.enquiry_fine.desc:0 "Les enquêteurs ont relevé des irrégularités. Une amende a été payée et la chapelle placée sous observation."
+ capellania.interdit_lifted.title:0 "Interdit Levé"
+ capellania.interdit_lifted.desc:0 "Les cloches sonnent de nouveau ! L'Église rend notre chapelle au service divin."
+ capellania.sacraments_celebrated.title:0 "Sacrements à la Chapelle"
+ capellania.sacraments_celebrated.desc:0 "Baptêmes et mariages ont été célébrés sous nos propres voûtes, au grand déplaisir de la paroisse."
+ capellania.secret_enabled.title:0 "Sacrements Secrets"
+ capellania.secret_enabled.desc:0 "Le personnel vendra discrètement des sacrements à qui paiera. Que Dieu nous pardonne."
+ capellania.secret_disabled.title:0 "Fin du Commerce Occulte"
+ capellania.secret_disabled.desc:0 "La vente secrète de sacrements a cessé."
+
  # Court Positions Localization
  capellania_maitre_de_chapelle:0 "Maître de chapelle"
- capellania_maitre_de_chapelle_desc:0 "Responsable de la coordination du chœur, de la liturgie et des programmes musicaux de la cour."
- capellania_premier_chapelain:0 "Premier chaplain"
- capellania_premier_chapelain_desc:0 "Prêtre principal célébrant les sacrements privés et guidant la vie spirituelle du souverain."
+ capellania_maitre_de_chapelle_desc:0 "Chef honorifique de la chapelle : budget, chantres et éclat musical. Rivalise souvent avec le Premier chapelain."
+ capellania_premier_chapelain:0 "Premier chapelain"
+ capellania_premier_chapelain_desc:0 "Prêtre principal supervisant la discipline liturgique, gardant les ornements et garantissant la conformité canonique."
  capellania_chantre_principal:0 "Chantre principal"
- capellania_chantre_principal_desc:0 "Chanteur principal de la cour, représentant le prestige dynastique lors des grands offices."
+ capellania_chantre_principal_desc:0 "Premier chanteur de la cour, dont la voix rehausse l'éclat des cérémonies et le rythme des messes fondées."
  capellania_gardien_du_tresor:0 "Gardien du trésor"
- capellania_gardien_du_tresor_desc:0 "Supervise les ornements sacrés, les reliquaires, les livres et les biens liturgiques mobiles."
- 
+ capellania_gardien_du_tresor_desc:0 "Supervise les ornements sacrés, les reliquaires, les livres et les biens liturgiques mobiles, surtout en voyage."
+
  # Decisions Localization
  capellania_found_chapel_title:0 "Fonder une Chapelle de Cour"
  capellania_found_chapel_desc:0 "Établir un lieu de culte et de représentation dynastique à la cour. Cela lance le processus de fondation."
@@ -71,26 +136,133 @@
  capellania_open_chapel_desc:0 "Ouvrir ou fermer le tableau de bord de la chapelle de cour."
  capellania_open_chapel_tooltip:0 "Ouvre le tableau de bord de gestion de la chapelle de cour."
  capellania_open_chapel_confirm:0 "Afficher/Masquer"
- 
+ capellania_order_books_title:0 "Commander des Livres Liturgiques"
+ capellania_order_books_desc:0 "Bréviaires, missels et livres d'heures augmentent directement la Capacité Liturgique de l'institution. Choisissez un atelier."
+ capellania_order_books_tooltip:0 "Commander des livres liturgiques pour accroître la capacité de la chapelle."
+ capellania_order_books_confirm:0 "Convoquer les copistes"
+ capellania_celebrate_sacraments_title:0 "Célébrer les Sacrements à la Chapelle"
+ capellania_celebrate_sacraments_desc:0 "Usurper baptêmes et mariages à l'église paroissiale. Grand prestige pour la dynastie, mais le clergé paroissial criera à l'empiètement."
+ capellania_celebrate_sacraments_tooltip:0 "Prestige et renom dynastique, au prix de la conformité canonique et de tensions juridictionnelles."
+ capellania_celebrate_sacraments_confirm:0 "Que sonnent les cloches"
+ capellania_enable_secret_sacraments_title:0 "Autoriser les Sacrements Secrets"
+ capellania_enable_secret_sacraments_desc:0 "Permettre au personnel de la chapelle de vendre discrètement des sacrements. De l'or occulte chaque saison, mais un scandale ferait de notre prêtre un infâme."
+ capellania_enable_secret_sacraments_tooltip:0 "Revenu occulte au risque d'une affaire de Prêtre Scandaleux."
+ capellania_enable_secret_sacraments_confirm:0 "Fermer les yeux"
+ capellania_disable_secret_sacraments_title:0 "Mettre Fin aux Sacrements Secrets"
+ capellania_disable_secret_sacraments_desc:0 "Mettre un terme au commerce discret des sacrements avant qu'il ne nous perde."
+ capellania_disable_secret_sacraments_tooltip:0 "Arrête le revenu occulte et son risque de scandale."
+ capellania_disable_secret_sacraments_confirm:0 "Cesser le commerce"
+ capellania_lift_interdit_title:0 "Négocier la Levée de l'Interdit"
+ capellania_lift_interdit_desc:0 "Par dons, pénitence et diplomatie, convaincre l'Église de rouvrir notre chapelle au service divin."
+ capellania_lift_interdit_tooltip:0 "Rouvre la chapelle ; la conformité retrouve un équilibre fragile."
+ capellania_lift_interdit_confirm:0 "Faire amende honorable"
+
  # Events Localization
  capellania_found_events.0001.t:0 "Fondation de la Chapelle : Dédicace"
  capellania_found_events.0001.d:0 "Les fondations de notre nouvelle chapelle de cour sont prêtes. À quelle figure sainte ou patron céleste devons-nous dédier cet espace sacré ?"
  capellania_found_events.0001.opt_notre_dame:0 "Dédier à Notre-Dame (La Vierge Marie)"
  capellania_found_events.0001.opt_saint_michel:0 "Dédier à Saint-Michel (Patron des chevaliers)"
  capellania_found_events.0001.opt_saint_martin:0 "Dédier à Saint-Martin (Patron de la charité)"
- 
+
  capellania_found_events.0002.t:0 "Fondation de la Chapelle : Dotation"
  capellania_found_events.0002.d:0 "Une chapelle ne peut fonctionner uniquement par la prière. Nous devons allouer une dotation durable pour financer les salaires, livres et entretien liturgique."
- capellania_found_events.0002.opt_low:0 "Allouer une dotation modeste"
- capellania_found_events.0002.opt_med:0 "Allouer une dotation moyenne"
- capellania_found_events.0002.opt_high:0 "Allouer une dotation prestigieuse et importante"
- 
+ capellania_found_events.0002.opt_low:0 "Allouer une dotation modeste (gratuit)"
+ capellania_found_events.0002.opt_med:0 "Allouer une dotation moyenne (50 Or)"
+ capellania_found_events.0002.opt_high:0 "Allouer une dotation prestigieuse et importante (120 Or)"
+
  capellania_found_events.0003.t:0 "Fondation de la Chapelle : Autorisation Canonique"
  capellania_found_events.0003.d:0 "Enfin, comment devons-nous nous accorder avec l'évêque ? Demanderons-nous une licence canonique régulière, ou procéderons-nous à une fondation clandestine pour garder le contrôle ?"
  capellania_found_events.0003.opt_regular:0 "Demander l'approbation épiscopale (Régulier)"
  capellania_found_events.0003.opt_clandestine:0 "Bâtir sans autorisation (Clandestin)"
- 
+
  capellania.found_success.title:0 "Chapelle Fondée"
  capellania.found_success.desc:0 "Notre chapelle de cour a été fondée canoniquement et est désormais active !"
  capellania.found_clandestine.title:0 "Chapelle Clandestine Bâtie"
  capellania.found_clandestine.desc:0 "L'oratoire privé est achevé en secret. Le clergé local nous regarde avec méfiance."
+
+ capellania_pulse.0010.t:0 "Négligence Sacrée"
+ capellania_pulse.0010.d:0 "Les registres ne mentent plus : des messes fondées ne sont plus célébrées alors que leurs rentes sont toujours perçues. L'Évêque a appris l'existence de ces « messes fictives » et nous somme de répondre de la négligence de notre chapelle."
+ capellania_pulse.0010.opt_a:0 "Promettre de rattraper les offices négligés"
+ capellania_pulse.0010.opt_b:0 "Balayer les remontrances de ce prélat trop curieux"
+
+ capellania_pulse.0011.t:0 "Le Scandale des Messes Fictives"
+ capellania_pulse.0011.d:0 "Ce qui se chuchotait à la sacristie se crie maintenant sur la place du marché : notre chapelle prend l'argent des morts et ne dit pas leurs messes. Les pèlerins se détournent et les prêcheurs nous citent en exemple d'impiété."
+ capellania_pulse.0011.opt_a:0 "Faire pénitence publique et doter les arriérés (100 Piété)"
+ capellania_pulse.0011.opt_b:0 "Laisser passer l'orage"
+
+ capellania_conflict.0001.t:0 "Protestation du Curé"
+ capellania_conflict.0001.d:0 "Le curé de la paroisse se tient à notre porte, tremblant de colère : baptêmes, mariages et offrandes qui reviennent à son église sont célébrés dans notre chapelle castrale. Il exige réparation et menace d'en appeler à l'Évêque."
+ capellania_conflict.0001.opt_a:0 "Faire amende honorable"
+ capellania_conflict.0001.opt_b:0 "Ignorer ce curé de campagne"
+ capellania_conflict.0001.opt_c:0 "Offrir un don discret à la paroisse (30 Or)"
+
+ capellania_conflict.0002.t:0 "L'Évêque Exige une Enquête"
+ capellania_conflict.0002.d:0 "L'affaire est remontée jusqu'à la cour épiscopale. L'Évêque exige une enquête canonique sur notre chapelle : l'ordination de ses prêtres, sa licence, et les sacrements célébrés entre ses murs."
+ capellania_conflict.0002.opt_a:0 "Accepter la visite canonique"
+ capellania_conflict.0002.opt_b:0 "Refuser — notre chapelle ne répond qu'à Dieu"
+ capellania_conflict.0002.opt_c:0 "Offrir à l'Évêque un chef-d'œuvre d'orfèvrerie (100 Or)"
+
+ capellania_conflict.0003.t:0 "La Visite Canonique"
+ capellania_conflict.0003.d:0 "Les enquêteurs de l'Évêque arpentent notre chapelle, examinent les lettres d'ordination du chapelain, comptent les messes fondées et interrogent les clercs un à un."
+ capellania_conflict.0003.opt_a:0 "Recevoir les enquêteurs avec dignité"
+ capellania_conflict.0003.opt_b:0 "Barrer les portes au dernier moment"
+
+ capellania_conflict.0004.t:0 "L'Interdit"
+ capellania_conflict.0004.d:0 "La sentence tombe comme une pierre tombale : notre chapelle est frappée d'Interdit. Ses portes sont scellées, ses cloches réduites au silence, ses autels dépouillés. Aucun office n'y sera célébré tant que l'Église ne fléchira pas."
+ capellania_conflict.0004.opt_a:0 "Nous nous soumettrons... pour l'instant"
+ capellania_conflict.0004.opt_b:0 "Jurer de faire lever cet Interdit"
+
+ capellania_conflict.0005.t:0 "Le Privilège Permanent"
+ capellania_conflict.0005.d:0 "Scellée du sceau épiscopal, la charte accorde à notre chapelle un privilège permanent : baptêmes, mariages et sépultures pourront désormais être célébrés sous nos voûtes, en plein droit canonique."
+ capellania_conflict.0005.opt_a:0 "Célébrer ce triomphe de notre maison"
+ capellania_conflict.0005.opt_b:0 "Rendre grâce avec humilité"
+
+ capellania_conflict.0010.t:0 "Le Prêtre Scandaleux"
+ capellania_conflict.0010.d:0 "Un mari furieux a tout révélé : notre prêtre de chapelle vendait mariages et baptêmes secrets à qui payait. L'affaire est publique et le mot « sacrilège » court sur toutes les lèvres."
+ capellania_conflict.0010.opt_a:0 "Désavouer le prêtre scandaleux"
+ capellania_conflict.0010.opt_b:0 "Assumer — cet or en valait la peine"
+
+ capellania_court.0001.t:0 "Conflit de Préséance"
+ capellania_court.0001.d:0 "Le Maître de chapelle et le Premier chapelain se querellent devant toute la cour : qui ordonnera le grand office de la fête patronale ? Le Maître veut l'éclat et des polyphonies nouvelles ; le Chapelain exige la rigueur austère du canon."
+ capellania_court.0001.opt_maitre:0 "Favoriser le Maître de chapelle : l'éclat avant tout"
+ capellania_court.0001.opt_premier:0 "Favoriser le Premier chapelain : la règle est la règle"
+ capellania_court.0001.opt_reconcile:0 "Réconcilier les deux rivaux"
+
+ capellania_court.0002.t:0 "Commande de Livres Liturgiques"
+ capellania_court.0002.d:0 "Bréviaires, missels, livres d'heures : sans livres, les offices vacillent. Trois ateliers offrent leurs services pour garnir la bibliothèque de la chapelle."
+ capellania_court.0002.opt_local:0 "L'atelier local : travail honnête (60 Or)"
+ capellania_court.0002.opt_monastic:0 "Le scriptorium monastique : copies sanctifiées (80 Or)"
+ capellania_court.0002.opt_foreign:0 "Le célèbre atelier flamand (120 Or)"
+ capellania_court.0002.opt_cancel:0 "À la réflexion, pas maintenant"
+
+ capellania_succession.0001.t:0 "La Transition Institutionnelle"
+ capellania_succession.0001.d:0 "La chapelle de cour de notre prédécesseur attend son sort : ses chapelains et chantres, ses messes fondées, ses dettes et son trésor passent désormais entre nos mains. Que ferons-nous de cet héritage ?"
+ capellania_succession.0001.opt_confirm:0 "Confirmer tout le personnel : continuité et stabilité"
+ capellania_succession.0001.opt_purge:0 "Procéder à une purge : installer nos fidèles"
+ capellania_succession.0001.opt_dissolve:0 "Dissoudre la chapelle et abandonner les fondations"
+
+ # Modifiers Localization
+ capellania_dedication_notre_dame_modifier:0 "Chapelle Notre-Dame"
+ capellania_dedication_saint_michel_modifier:0 "Chapelle Saint-Michel"
+ capellania_dedication_saint_martin_modifier:0 "Chapelle Saint-Martin"
+ capellania_masses_tier_1_modifier:0 "Messes Fondées"
+ capellania_masses_tier_2_modifier:0 "Nombreuses Messes Fondées"
+ capellania_masses_tier_3_modifier:0 "Illustres Fondations de Messes"
+ capellania_debt_phase_1_modifier:0 "Messes Fictives"
+ capellania_debt_phase_2_modifier:0 "Négligence Sacrée"
+ capellania_debt_phase_3_modifier:0 "Scandale des Messes Fictives"
+ capellania_privilege_modifier:0 "Privilège Sacramentel"
+ capellania_interdit_modifier:0 "Chapelle Frappée d'Interdit"
+ capellania_purge_chaos_modifier:0 "Désorganisation Liturgique"
+
+ # Opinion Modifiers Localization
+ capellania_reformed_foundations_opinion:0 "Fondations ancestrales supprimées"
+ capellania_dissolved_chapel_opinion:0 "A dissous la chapelle dynastique"
+
+ # Travel Options Localization
+ capellania_travel_light:0 "Suite de Chapelle Légère"
+ capellania_travel_light_desc:0 "Un chapelain et les objets personnels. Peu coûteux et rapide, mais la piété du voyage est minimale."
+ capellania_travel_ordinary:0 "Suite de Chapelle Ordinaire"
+ capellania_travel_ordinary_desc:0 "Suite partielle avec autel portatif et reliques. Service régulier en chemin, au prix d'un peu de vitesse et de la stabilité du siège."
+ capellania_travel_solemn:0 "Suite de Chapelle Solennelle"
+ capellania_travel_solemn_desc:0 "Le personnel complet et les reliques majeures. Cérémonial éclatant et poids diplomatique, mais lent, coûteux, et le siège en souffre."

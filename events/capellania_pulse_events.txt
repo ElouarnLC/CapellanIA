@@ -1,0 +1,116 @@
+﻿# CapellanIA: Maintenance Pulse & Liturgical Debt Events
+namespace = capellania_pulse
+
+# ------------------------------------------------------------------
+# Quarterly heartbeat (hidden). Self-reschedules while the chapel lives.
+# ------------------------------------------------------------------
+capellania_pulse.0001 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = { has_character_flag = chapel_is_active }
+			capellania_quarterly_upkeep_effect = yes
+			trigger_event = { id = capellania_pulse.0001 months = 3 }
+		}
+	}
+}
+
+# ------------------------------------------------------------------
+# Debt Phase 2: Sacred Negligence - the Bishop gains a hook
+# ------------------------------------------------------------------
+capellania_pulse.0010 = {
+	type = character_event
+	title = capellania_pulse.0010.t
+	desc = capellania_pulse.0010.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:capellania_bishop
+		animation = anger
+	}
+
+	immediate = {
+		capellania_get_bishop_effect = yes
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+	}
+
+	# Promise to catch up on the neglected offices
+	option = {
+		name = capellania_pulse.0010.opt_a
+		add_piety = -10
+		scope:capellania_bishop = {
+			add_hook = {
+				type = favor_hook
+				target = root
+			}
+		}
+	}
+
+	# Dismiss the remonstrance - pride before conformity
+	option = {
+		name = capellania_pulse.0010.opt_b
+		add_prestige = 25
+		change_variable = { name = chapel_conformity change = -10 }
+		scope:capellania_bishop = {
+			add_hook = {
+				type = favor_hook
+				target = root
+			}
+		}
+		capellania_clamp_stats_effect = yes
+	}
+}
+
+# ------------------------------------------------------------------
+# Debt Phase 3: Public Scandal of the Fictive Masses
+# ------------------------------------------------------------------
+capellania_pulse.0011 = {
+	type = character_event
+	title = capellania_pulse.0011.t
+	desc = capellania_pulse.0011.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = shame
+	}
+
+	trigger = {
+		has_character_flag = chapel_is_active
+	}
+
+	immediate = {
+		add_prestige = -100
+		change_variable = { name = chapel_prestige change = -15 }
+		dynasty ?= { add_dynasty_prestige = -50 }
+	}
+
+	# Public penance: buy back some of the debt
+	option = {
+		name = capellania_pulse.0011.opt_a
+		trigger = { piety >= 100 }
+		add_piety = -100
+		change_variable = { name = chapel_liturgical_debt change = -2 }
+		change_variable = { name = chapel_conformity change = 10 }
+		capellania_clamp_stats_effect = yes
+		capellania_refresh_modifiers_effect = yes
+	}
+
+	# Weather the storm
+	option = {
+		name = capellania_pulse.0011.opt_b
+		change_variable = { name = chapel_conformity change = -10 }
+		add_stress = 15
+		capellania_clamp_stats_effect = yes
+		capellania_refresh_modifiers_effect = yes
+	}
+}

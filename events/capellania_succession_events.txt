@@ -1,0 +1,68 @@
+﻿# CapellanIA: Institutional Transition on Succession
+namespace = capellania_succession
+
+# ------------------------------------------------------------------
+# The heir decides the fate of the inherited court chapel
+# ------------------------------------------------------------------
+capellania_succession.0001 = {
+	type = character_event
+	title = capellania_succession.0001.t
+	desc = capellania_succession.0001.d
+	theme = religion
+
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	trigger = {
+		has_character_flag = chapel_transition_pending
+		not = { has_character_flag = chapel_is_active }
+	}
+
+	# Confirm the whole personnel: stability and continuity
+	option = {
+		name = capellania_succession.0001.opt_confirm
+		change_variable = { name = chapel_discipline change = 10 }
+		change_variable = { name = chapel_conformity change = 5 }
+		dynasty ?= { add_dynasty_prestige = 25 }
+		capellania_heir_activate_effect = yes
+		ai_chance = { base = 70 }
+	}
+
+	# Purge: replace the staff with our own faithful
+	option = {
+		name = capellania_succession.0001.opt_purge
+		add_prestige = 25
+		change_variable = { name = chapel_discipline change = -20 }
+		change_variable = { name = chapel_conformity change = -5 }
+		add_character_modifier = {
+			modifier = capellania_purge_chaos_modifier
+			years = 2
+		}
+		# Chaos of the transition: objects go missing
+		random = {
+			chance = 40
+			change_variable = { name = chapel_books change = -1 }
+			change_variable = { name = chapel_prestige change = -5 }
+		}
+		capellania_heir_activate_effect = yes
+		ai_chance = { base = 25 }
+	}
+
+	# Dissolve the chapel and abandon the ancestral foundations
+	option = {
+		name = capellania_succession.0001.opt_dissolve
+		dynasty ?= { add_dynasty_prestige = -100 }
+		every_close_family_member = {
+			limit = { is_alive = yes }
+			add_opinion = {
+				target = root
+				modifier = capellania_dissolved_chapel_opinion
+			}
+		}
+		remove_character_flag = chapel_transition_pending
+		capellania_clear_all_effect = yes
+		ai_chance = { base = 5 }
+	}
+}

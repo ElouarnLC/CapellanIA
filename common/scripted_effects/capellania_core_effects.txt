@@ -1,5 +1,9 @@
 ﻿# CapellanIA: Core Scripted Effects for Data Engine
-# Target Scope: Character (Sovereign)
+# Target Scope: Character (Sovereign) unless stated otherwise
+
+# ------------------------------------------------------------------
+# Initialization / teardown
+# ------------------------------------------------------------------
 
 capellania_initialize_character_effect = {
 	if = {
@@ -7,66 +11,84 @@ capellania_initialize_character_effect = {
 			not = { has_character_flag = chapel_is_active }
 		}
 		add_character_flag = chapel_is_active
-		
-		# Set baseline status to resident
 		add_character_flag = chapel_status_resident
-		
-		# Initialize core numerical tracking variables (0-100 scale)
-		set_variable = { name = chapel_prestige value = 50 }
-		set_variable = { name = chapel_liturgical_capacity value = 10 }
-		set_variable = { name = chapel_liturgical_load value = 0 }
-		set_variable = { name = chapel_discipline value = 80 }
-		set_variable = { name = chapel_conformity value = 80 }
-		
-		# Initialize slot upgrade levels (0 = None/Empty)
+
+		# Core stats (0-100 scale)
+		set_variable = { name = chapel_prestige value = 40 }
+		set_variable = { name = chapel_discipline value = 70 }
+		set_variable = { name = chapel_conformity value = 60 }
+
+		# Institution counters
+		set_variable = { name = chapel_founded_masses value = 0 }
+		set_variable = { name = chapel_books value = 0 }
+		set_variable = { name = chapel_liturgical_debt value = 0 }
+		set_variable = { name = chapel_travel_status value = 0 }
+		set_variable = { name = chapel_conflict_stage value = 0 }
+		set_variable = { name = chapel_privilege value = 0 }
+
+		# Slot upgrade levels (0 = None/Empty)
 		set_variable = { name = chapel_slot_autel value = 0 }
 		set_variable = { name = chapel_slot_vitraux value = 0 }
 		set_variable = { name = chapel_slot_tombeaux value = 0 }
 		set_variable = { name = chapel_slot_mobilier value = 0 }
+
+		# Endowment (dotation) adjusts the starting institution
+		if = {
+			limit = {
+				has_variable = chapel_dotation
+				var:chapel_dotation >= 2
+			}
+			change_variable = { name = chapel_prestige change = 10 }
+		}
+		if = {
+			limit = {
+				has_variable = chapel_dotation
+				var:chapel_dotation >= 3
+			}
+			change_variable = { name = chapel_prestige change = 10 }
+			set_variable = { name = chapel_books value = 1 }
+		}
+
+		capellania_refresh_modifiers_effect = yes
+		capellania_start_pulse_effect = yes
 	}
 }
 
-capellania_set_status_resident_effect = {
-	remove_character_flag = chapel_status_travel_light
-	remove_character_flag = chapel_status_travel_ordinary
-	remove_character_flag = chapel_status_travel_solemn
-	add_character_flag = chapel_status_resident
+# Starts (or restarts) the quarterly maintenance heartbeat
+capellania_start_pulse_effect = {
+	add_character_flag = { flag = chapel_pulse_alive days = 200 }
+	trigger_event = { id = capellania_pulse.0001 months = 3 }
 }
 
-capellania_set_status_travel_light_effect = {
-	remove_character_flag = chapel_status_resident
-	remove_character_flag = chapel_status_travel_ordinary
-	remove_character_flag = chapel_status_travel_solemn
-	add_character_flag = chapel_status_travel_light
-}
-
-capellania_set_status_travel_ordinary_effect = {
-	remove_character_flag = chapel_status_resident
-	remove_character_flag = chapel_status_travel_light
-	remove_character_flag = chapel_status_travel_solemn
-	add_character_flag = chapel_status_travel_ordinary
-}
-
-capellania_set_status_travel_solemn_effect = {
-	remove_character_flag = chapel_status_resident
-	remove_character_flag = chapel_status_travel_light
-	remove_character_flag = chapel_status_travel_ordinary
-	add_character_flag = chapel_status_travel_solemn
-}
-
-capellania_deactivate_effect = {
+# Full teardown: removes every flag, variable and modifier of the system
+capellania_clear_all_effect = {
 	remove_character_flag = chapel_is_active
 	remove_character_flag = chapel_status_resident
 	remove_character_flag = chapel_status_travel_light
 	remove_character_flag = chapel_status_travel_ordinary
 	remove_character_flag = chapel_status_travel_solemn
-	
+	remove_character_flag = chapel_interdit
+	remove_character_flag = chapel_secret_sacraments
+	remove_character_flag = chapel_hook_given
+	remove_character_flag = chapel_pulse_alive
+	remove_character_flag = chapel_transition_pending
+	remove_character_flag = chapel_sacrament_usurpation
+	remove_character_flag = chapel_scandal_cooldown
+	remove_character_flag = chapel_books_cooldown
+	remove_character_flag = chapel_window_opened
+
+	# With chapel_is_active removed, refresh strips every modifier
+	capellania_refresh_modifiers_effect = yes
+
 	clear_variable = chapel_prestige
-	clear_variable = chapel_liturgical_capacity
-	clear_variable = chapel_liturgical_load
 	clear_variable = chapel_discipline
 	clear_variable = chapel_conformity
-	
+	clear_variable = chapel_founded_masses
+	clear_variable = chapel_books
+	clear_variable = chapel_liturgical_debt
+	clear_variable = chapel_travel_status
+	clear_variable = chapel_conflict_stage
+	clear_variable = chapel_privilege
 	clear_variable = chapel_slot_autel
 	clear_variable = chapel_slot_vitraux
 	clear_variable = chapel_slot_tombeaux
@@ -74,4 +96,589 @@ capellania_deactivate_effect = {
 	clear_variable = chapel_dedication
 	clear_variable = chapel_dotation
 	clear_variable = chapel_canon_status
+	clear_variable = chapel_bishop_char
+}
+
+# Kept for backwards compatibility with older saves/scripts
+capellania_deactivate_effect = {
+	capellania_clear_all_effect = yes
+}
+
+# ------------------------------------------------------------------
+# Travel deployment status (0 resident / 1 light / 2 ordinary / 3 solemn)
+# ------------------------------------------------------------------
+
+capellania_set_status_resident_effect = {
+	remove_character_flag = chapel_status_travel_light
+	remove_character_flag = chapel_status_travel_ordinary
+	remove_character_flag = chapel_status_travel_solemn
+	add_character_flag = chapel_status_resident
+	set_variable = { name = chapel_travel_status value = 0 }
+}
+
+capellania_set_status_travel_light_effect = {
+	remove_character_flag = chapel_status_resident
+	remove_character_flag = chapel_status_travel_ordinary
+	remove_character_flag = chapel_status_travel_solemn
+	add_character_flag = chapel_status_travel_light
+	set_variable = { name = chapel_travel_status value = 1 }
+}
+
+capellania_set_status_travel_ordinary_effect = {
+	remove_character_flag = chapel_status_resident
+	remove_character_flag = chapel_status_travel_light
+	remove_character_flag = chapel_status_travel_solemn
+	add_character_flag = chapel_status_travel_ordinary
+	set_variable = { name = chapel_travel_status value = 2 }
+}
+
+capellania_set_status_travel_solemn_effect = {
+	remove_character_flag = chapel_status_resident
+	remove_character_flag = chapel_status_travel_light
+	remove_character_flag = chapel_status_travel_ordinary
+	add_character_flag = chapel_status_travel_solemn
+	set_variable = { name = chapel_travel_status value = 3 }
+}
+
+# ------------------------------------------------------------------
+# Modifier management
+# ------------------------------------------------------------------
+
+capellania_refresh_modifiers_effect = {
+	remove_character_modifier = capellania_dedication_notre_dame_modifier
+	remove_character_modifier = capellania_dedication_saint_michel_modifier
+	remove_character_modifier = capellania_dedication_saint_martin_modifier
+	remove_character_modifier = capellania_masses_tier_1_modifier
+	remove_character_modifier = capellania_masses_tier_2_modifier
+	remove_character_modifier = capellania_masses_tier_3_modifier
+	remove_character_modifier = capellania_debt_phase_1_modifier
+	remove_character_modifier = capellania_debt_phase_2_modifier
+	remove_character_modifier = capellania_debt_phase_3_modifier
+	remove_character_modifier = capellania_privilege_modifier
+	remove_character_modifier = capellania_interdit_modifier
+
+	if = {
+		limit = { has_character_flag = chapel_is_active }
+		if = {
+			limit = { has_character_flag = chapel_interdit }
+			# Chapel forcibly closed: every benefit suspended
+			add_character_modifier = capellania_interdit_modifier
+		}
+		else = {
+			# Dedication blessing
+			if = {
+				limit = {
+					has_variable = chapel_dedication
+					var:chapel_dedication = 1
+				}
+				add_character_modifier = capellania_dedication_notre_dame_modifier
+			}
+			else_if = {
+				limit = {
+					has_variable = chapel_dedication
+					var:chapel_dedication = 2
+				}
+				add_character_modifier = capellania_dedication_saint_michel_modifier
+			}
+			else_if = {
+				limit = {
+					has_variable = chapel_dedication
+					var:chapel_dedication = 3
+				}
+				add_character_modifier = capellania_dedication_saint_martin_modifier
+			}
+
+			# Founded masses blessing tiers
+			if = {
+				limit = {
+					has_variable = chapel_founded_masses
+					var:chapel_founded_masses >= 5
+				}
+				add_character_modifier = capellania_masses_tier_3_modifier
+			}
+			else_if = {
+				limit = {
+					has_variable = chapel_founded_masses
+					var:chapel_founded_masses >= 3
+				}
+				add_character_modifier = capellania_masses_tier_2_modifier
+			}
+			else_if = {
+				limit = {
+					has_variable = chapel_founded_masses
+					var:chapel_founded_masses >= 1
+				}
+				add_character_modifier = capellania_masses_tier_1_modifier
+			}
+
+			# Permanent sacramental privilege
+			if = {
+				limit = {
+					has_variable = chapel_privilege
+					var:chapel_privilege >= 1
+				}
+				add_character_modifier = capellania_privilege_modifier
+			}
+
+			# Liturgical debt (Fictive Masses ticker)
+			if = {
+				limit = {
+					has_variable = chapel_liturgical_debt
+					var:chapel_liturgical_debt >= 5
+				}
+				add_character_modifier = capellania_debt_phase_3_modifier
+			}
+			else_if = {
+				limit = {
+					has_variable = chapel_liturgical_debt
+					var:chapel_liturgical_debt >= 3
+				}
+				add_character_modifier = capellania_debt_phase_2_modifier
+			}
+			else_if = {
+				limit = {
+					has_variable = chapel_liturgical_debt
+					var:chapel_liturgical_debt >= 1
+				}
+				add_character_modifier = capellania_debt_phase_1_modifier
+			}
+		}
+	}
+}
+
+# ------------------------------------------------------------------
+# Stat clamping (0-100 for stats, hard caps for counters)
+# ------------------------------------------------------------------
+
+capellania_clamp_stats_effect = {
+	if = {
+		limit = { has_variable = chapel_prestige var:chapel_prestige > 100 }
+		set_variable = { name = chapel_prestige value = 100 }
+	}
+	if = {
+		limit = { has_variable = chapel_prestige var:chapel_prestige < 0 }
+		set_variable = { name = chapel_prestige value = 0 }
+	}
+	if = {
+		limit = { has_variable = chapel_discipline var:chapel_discipline > 100 }
+		set_variable = { name = chapel_discipline value = 100 }
+	}
+	if = {
+		limit = { has_variable = chapel_discipline var:chapel_discipline < 0 }
+		set_variable = { name = chapel_discipline value = 0 }
+	}
+	if = {
+		limit = { has_variable = chapel_conformity var:chapel_conformity > 100 }
+		set_variable = { name = chapel_conformity value = 100 }
+	}
+	if = {
+		limit = { has_variable = chapel_conformity var:chapel_conformity < 0 }
+		set_variable = { name = chapel_conformity value = 0 }
+	}
+	if = {
+		limit = { has_variable = chapel_liturgical_debt var:chapel_liturgical_debt > 8 }
+		set_variable = { name = chapel_liturgical_debt value = 8 }
+	}
+	if = {
+		limit = { has_variable = chapel_liturgical_debt var:chapel_liturgical_debt < 0 }
+		set_variable = { name = chapel_liturgical_debt value = 0 }
+	}
+	if = {
+		limit = { has_variable = chapel_books var:chapel_books > 3 }
+		set_variable = { name = chapel_books value = 3 }
+	}
+	if = {
+		limit = { has_variable = chapel_books var:chapel_books < 0 }
+		set_variable = { name = chapel_books value = 0 }
+	}
+	if = {
+		limit = { has_variable = chapel_founded_masses var:chapel_founded_masses < 0 }
+		set_variable = { name = chapel_founded_masses value = 0 }
+	}
+}
+
+# ------------------------------------------------------------------
+# The Bishop (diocesan antagonist, created once and remembered)
+# ------------------------------------------------------------------
+
+capellania_get_bishop_effect = {
+	if = {
+		limit = {
+			has_variable = chapel_bishop_char
+			exists = var:chapel_bishop_char
+			var:chapel_bishop_char = { is_alive = yes }
+		}
+		var:chapel_bishop_char = { save_scope_as = capellania_bishop }
+	}
+	else = {
+		create_character = {
+			age = { 40 65 }
+			gender = male
+			faith = root.faith
+			culture = root.culture
+			location = root.location
+			random_traits = yes
+			learning = { 8 14 }
+			save_scope_as = capellania_bishop
+		}
+		set_variable = { name = chapel_bishop_char value = scope:capellania_bishop }
+	}
+}
+
+# ------------------------------------------------------------------
+# Founded Masses (Messes Fondees)
+# ------------------------------------------------------------------
+
+capellania_found_mass_effect = {
+	remove_short_term_gold = 40
+	change_variable = { name = chapel_founded_masses change = 1 }
+	change_variable = { name = chapel_prestige change = 5 }
+	add_piety = 50
+	dynasty ?= { add_dynasty_prestige = 25 }
+	capellania_clamp_stats_effect = yes
+	capellania_refresh_modifiers_effect = yes
+	send_interface_toast = {
+		title = capellania.mass_founded.title
+		desc = capellania.mass_founded.desc
+	}
+}
+
+capellania_reform_mass_effect = {
+	change_variable = { name = chapel_founded_masses change = -1 }
+	dynasty ?= { add_dynasty_prestige = -25 }
+	every_close_family_member = {
+		limit = { is_alive = yes }
+		add_opinion = {
+			target = root
+			modifier = capellania_reformed_foundations_opinion
+		}
+	}
+	capellania_clamp_stats_effect = yes
+	capellania_refresh_modifiers_effect = yes
+	send_interface_toast = {
+		title = capellania.mass_reformed.title
+		desc = capellania.mass_reformed.desc
+	}
+}
+
+# ------------------------------------------------------------------
+# Interdict (forced closure by the Church)
+# ------------------------------------------------------------------
+
+capellania_apply_interdit_effect = {
+	add_character_flag = chapel_interdit
+	set_variable = { name = chapel_conflict_stage value = 4 }
+	capellania_refresh_modifiers_effect = yes
+}
+
+capellania_lift_interdit_effect = {
+	remove_character_flag = chapel_interdit
+	set_variable = { name = chapel_conflict_stage value = 0 }
+	set_variable = { name = chapel_conformity value = 60 }
+	set_variable = { name = chapel_liturgical_debt value = 0 }
+	capellania_refresh_modifiers_effect = yes
+	send_interface_toast = {
+		title = capellania.interdit_lifted.title
+		desc = capellania.interdit_lifted.desc
+	}
+}
+
+# ------------------------------------------------------------------
+# Quarterly maintenance heartbeat (the core gameplay loop)
+# ------------------------------------------------------------------
+
+capellania_quarterly_upkeep_effect = {
+	# Keep the watchdog fed
+	add_character_flag = { flag = chapel_pulse_alive days = 200 }
+
+	# Back home: fold the itinerant chapel automatically
+	if = {
+		limit = {
+			is_travelling = no
+			has_variable = chapel_travel_status
+			var:chapel_travel_status >= 1
+		}
+		capellania_set_status_resident_effect = yes
+	}
+
+	if = {
+		limit = { has_character_flag = chapel_interdit }
+		# Under Interdict everything is frozen; time slowly mends relations
+		change_variable = { name = chapel_conformity change = 1 }
+	}
+	else = {
+		# --- Staff-driven drift ---
+		if = {
+			limit = {
+				employs_court_position = capellania_premier_chapelain
+				var:chapel_conformity < 80
+			}
+			change_variable = { name = chapel_conformity change = 2 }
+		}
+		if = {
+			limit = {
+				employs_court_position = capellania_maitre_de_chapelle
+				var:chapel_discipline < 80
+			}
+			change_variable = { name = chapel_discipline change = 2 }
+		}
+		if = {
+			limit = {
+				nor = {
+					employs_court_position = capellania_premier_chapelain
+					employs_court_position = capellania_maitre_de_chapelle
+				}
+			}
+			change_variable = { name = chapel_discipline change = -2 }
+		}
+
+		# --- Fictive Masses ticker (liturgical debt) ---
+		set_local_variable = { name = cap_overload value = capellania_overload_value }
+		set_local_variable = { name = cap_prev_debt value = var:chapel_liturgical_debt }
+		if = {
+			limit = { local_var:cap_overload >= 1 }
+			change_variable = { name = chapel_liturgical_debt change = 1 }
+			if = {
+				limit = { local_var:cap_overload >= 4 }
+				change_variable = { name = chapel_liturgical_debt change = 1 }
+			}
+			# Warn the player when a new debt phase is reached
+			if = {
+				limit = {
+					local_var:cap_prev_debt < 1
+					var:chapel_liturgical_debt >= 1
+				}
+				send_interface_toast = {
+					title = capellania.debt_started.title
+					desc = capellania.debt_started.desc
+				}
+			}
+		}
+		else_if = {
+			limit = { var:chapel_liturgical_debt >= 1 }
+			change_variable = { name = chapel_liturgical_debt change = -1 }
+			if = {
+				limit = { var:chapel_liturgical_debt <= 0 }
+				send_interface_toast = {
+					title = capellania.debt_cleared.title
+					desc = capellania.debt_cleared.desc
+				}
+			}
+		}
+
+		# Phase 2: the Bishop hears of the Sacred Negligence and gains a hook
+		if = {
+			limit = {
+				var:chapel_liturgical_debt >= 3
+				not = { has_character_flag = chapel_hook_given }
+			}
+			add_character_flag = chapel_hook_given
+			trigger_event = { id = capellania_pulse.0010 days = 7 }
+		}
+		if = {
+			limit = {
+				var:chapel_liturgical_debt <= 0
+				has_character_flag = chapel_hook_given
+			}
+			remove_character_flag = chapel_hook_given
+		}
+
+		# Phase 3: public scandal
+		if = {
+			limit = {
+				var:chapel_liturgical_debt >= 5
+				not = { has_character_flag = chapel_scandal_cooldown }
+			}
+			add_character_flag = { flag = chapel_scandal_cooldown days = 540 }
+			trigger_event = { id = capellania_pulse.0011 days = 14 }
+		}
+
+		# --- Secret sacraments (occult income, scandal risk) ---
+		if = {
+			limit = { has_character_flag = chapel_secret_sacraments }
+			add_gold = 8
+			change_variable = { name = chapel_conformity change = -1 }
+			random = {
+				chance = 10
+				trigger_event = { id = capellania_conflict.0010 days = 5 }
+			}
+		}
+
+		# --- Parish conflict emergence ---
+		if = {
+			limit = {
+				var:chapel_conflict_stage <= 0
+				var:chapel_privilege <= 0
+			}
+			random = {
+				chance = 4
+				modifier = {
+					add = 12
+					has_character_flag = chapel_sacrament_usurpation
+				}
+				modifier = {
+					add = 8
+					has_variable = chapel_canon_status
+					var:chapel_canon_status = 2
+				}
+				modifier = {
+					add = 8
+					var:chapel_conformity < 50
+				}
+				modifier = {
+					add = 10
+					var:chapel_conformity < 30
+				}
+				modifier = {
+					add = 6
+					has_character_flag = chapel_secret_sacraments
+				}
+				trigger_event = { id = capellania_conflict.0001 days = 10 }
+			}
+		}
+
+		# --- Itinerant chapel incidents ---
+		if = {
+			limit = {
+				is_travelling = yes
+				has_variable = chapel_travel_status
+				var:chapel_travel_status >= 2
+			}
+			# Treasure theft attempt on the road
+			random = {
+				chance = 8
+				modifier = {
+					add = 4
+					var:chapel_travel_status = 3
+				}
+				if = {
+					limit = { employs_court_position = capellania_gardien_du_tresor }
+					add_prestige = 25
+					send_interface_toast = {
+						title = capellania.theft_thwarted.title
+						desc = capellania.theft_thwarted.desc
+					}
+				}
+				else = {
+					remove_short_term_gold = 40
+					change_variable = { name = chapel_prestige change = -10 }
+					send_interface_toast = {
+						title = capellania.theft_loss.title
+						desc = capellania.theft_loss.desc
+					}
+				}
+			}
+			# Residence Stability: masses at the seat risk being botched
+			random = {
+				chance = 25
+				modifier = {
+					add = -15
+					var:chapel_discipline >= 70
+				}
+				change_variable = { name = chapel_liturgical_debt change = 1 }
+				send_interface_toast = {
+					title = capellania.residence_unstable.title
+					desc = capellania.residence_unstable.desc
+				}
+			}
+		}
+	}
+
+	capellania_clamp_stats_effect = yes
+	capellania_refresh_modifiers_effect = yes
+}
+
+# ------------------------------------------------------------------
+# Succession: Institutional Transition
+# Root = deceased sovereign; scope:capellania_heir = primary heir
+# ------------------------------------------------------------------
+
+capellania_transfer_to_heir_effect = {
+	scope:capellania_heir = {
+		add_character_flag = chapel_transition_pending
+
+		if = {
+			limit = { root = { has_variable = chapel_dedication } }
+			set_variable = { name = chapel_dedication value = root.var:chapel_dedication }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_dotation } }
+			set_variable = { name = chapel_dotation value = root.var:chapel_dotation }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_canon_status } }
+			set_variable = { name = chapel_canon_status value = root.var:chapel_canon_status }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_prestige } }
+			set_variable = { name = chapel_prestige value = root.var:chapel_prestige }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_discipline } }
+			set_variable = { name = chapel_discipline value = root.var:chapel_discipline }
+			# Transition disorder
+			change_variable = { name = chapel_discipline change = -10 }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_conformity } }
+			set_variable = { name = chapel_conformity value = root.var:chapel_conformity }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_founded_masses } }
+			set_variable = { name = chapel_founded_masses value = root.var:chapel_founded_masses }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_books } }
+			set_variable = { name = chapel_books value = root.var:chapel_books }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_liturgical_debt } }
+			set_variable = { name = chapel_liturgical_debt value = root.var:chapel_liturgical_debt }
+			# The heir inherits every liturgical obligation, plus transition backlog
+			change_variable = { name = chapel_liturgical_debt change = 1 }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_slot_autel } }
+			set_variable = { name = chapel_slot_autel value = root.var:chapel_slot_autel }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_slot_vitraux } }
+			set_variable = { name = chapel_slot_vitraux value = root.var:chapel_slot_vitraux }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_slot_tombeaux } }
+			set_variable = { name = chapel_slot_tombeaux value = root.var:chapel_slot_tombeaux }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_slot_mobilier } }
+			set_variable = { name = chapel_slot_mobilier value = root.var:chapel_slot_mobilier }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_privilege } }
+			set_variable = { name = chapel_privilege value = root.var:chapel_privilege }
+		}
+		if = {
+			limit = { root = { has_variable = chapel_bishop_char } }
+			set_variable = { name = chapel_bishop_char value = root.var:chapel_bishop_char }
+		}
+		set_variable = { name = chapel_travel_status value = 0 }
+		if = {
+			limit = { root = { has_character_flag = chapel_interdit } }
+			add_character_flag = chapel_interdit
+			set_variable = { name = chapel_conflict_stage value = 4 }
+		}
+		else = {
+			set_variable = { name = chapel_conflict_stage value = 0 }
+		}
+	}
+}
+
+# Activates the inherited chapel once the heir made their transition choice
+capellania_heir_activate_effect = {
+	remove_character_flag = chapel_transition_pending
+	add_character_flag = chapel_is_active
+	add_character_flag = chapel_status_resident
+	capellania_clamp_stats_effect = yes
+	capellania_refresh_modifiers_effect = yes
+	capellania_start_pulse_effect = yes
 }

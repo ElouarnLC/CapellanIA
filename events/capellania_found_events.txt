@@ -7,9 +7,12 @@ capellania_found_events.0001 = {
 	title = capellania_found_events.0001.t
 	desc = capellania_found_events.0001.d
 	theme = religion
-	
-	left_portrait = root
-	
+
+	left_portrait = {
+		character = root
+		animation = prayer
+	}
+
 	option = {
 		name = capellania_found_events.0001.opt_notre_dame
 		set_variable = { name = chapel_dedication value = 1 } # Notre-Dame
@@ -33,9 +36,12 @@ capellania_found_events.0002 = {
 	title = capellania_found_events.0002.t
 	desc = capellania_found_events.0002.d
 	theme = religion
-	
-	left_portrait = root
-	
+
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
 	option = {
 		name = capellania_found_events.0002.opt_low
 		set_variable = { name = chapel_dotation value = 1 } # Low endowment
@@ -43,11 +49,15 @@ capellania_found_events.0002 = {
 	}
 	option = {
 		name = capellania_found_events.0002.opt_med
+		trigger = { gold >= 50 }
+		remove_short_term_gold = 50
 		set_variable = { name = chapel_dotation value = 2 } # Medium endowment
 		trigger_event = { id = capellania_found_events.0003 }
 	}
 	option = {
 		name = capellania_found_events.0002.opt_high
+		trigger = { gold >= 120 }
+		remove_short_term_gold = 120
 		set_variable = { name = chapel_dotation value = 3 } # High endowment
 		trigger_event = { id = capellania_found_events.0003 }
 	}
@@ -59,19 +69,23 @@ capellania_found_events.0003 = {
 	title = capellania_found_events.0003.t
 	desc = capellania_found_events.0003.d
 	theme = religion
-	
-	left_portrait = root
-	
+
+	left_portrait = {
+		character = root
+		animation = prayer
+	}
+
 	option = {
 		name = capellania_found_events.0003.opt_regular
 		set_variable = { name = chapel_canon_status value = 1 } # Canonical approval
-		
-		# Execute core initialization
+
+		# Execute core initialization (also starts the quarterly pulse)
 		capellania_initialize_character_effect = yes
-		
+
 		# Boost initial conformity due to Bishop's license
 		change_variable = { name = chapel_conformity change = 15 }
-		
+		capellania_clamp_stats_effect = yes
+
 		send_interface_toast = {
 			title = capellania.found_success.title
 			desc = capellania.found_success.desc
@@ -80,12 +94,13 @@ capellania_found_events.0003 = {
 	option = {
 		name = capellania_found_events.0003.opt_clandestine
 		set_variable = { name = chapel_canon_status value = 2 } # Clandestine construction
-		
+
 		capellania_initialize_character_effect = yes
-		
+
 		# Suffer conformity penalty for illegal structure
 		change_variable = { name = chapel_conformity change = -35 }
-		
+		capellania_clamp_stats_effect = yes
+
 		send_interface_toast = {
 			title = capellania.found_clandestine.title
 			desc = capellania.found_clandestine.desc

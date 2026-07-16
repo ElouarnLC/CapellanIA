@@ -1,0 +1,63 @@
+﻿# CapellanIA: On-Action Hooks
+
+# --- Succession: Institutional Transition ---
+on_death = {
+	on_actions = {
+		capellania_death_management
+	}
+}
+
+capellania_death_management = {
+	effect = {
+		if = {
+			limit = {
+				has_character_flag = chapel_is_active
+				exists = primary_heir
+				primary_heir = {
+					nor = {
+						has_character_flag = chapel_is_active
+						has_character_flag = chapel_transition_pending
+					}
+				}
+			}
+			primary_heir = { save_scope_as = capellania_heir }
+			capellania_transfer_to_heir_effect = yes
+			scope:capellania_heir = {
+				trigger_event = { id = capellania_succession.0001 days = 10 }
+			}
+		}
+	}
+}
+
+# --- Yearly watchdog: revives a lost heartbeat, rolls court rivalry ---
+yearly_playable_pulse = {
+	on_actions = {
+		capellania_yearly_maintenance
+	}
+}
+
+capellania_yearly_maintenance = {
+	effect = {
+		# Restart the quarterly pulse if it died silently
+		if = {
+			limit = {
+				has_character_flag = chapel_is_active
+				not = { has_character_flag = chapel_pulse_alive }
+			}
+			capellania_start_pulse_effect = yes
+		}
+		# Precedence conflict between the Master of the Chapel and the First Chaplain
+		if = {
+			limit = {
+				has_character_flag = chapel_is_active
+				not = { has_character_flag = chapel_interdit }
+				employs_court_position = capellania_maitre_de_chapelle
+				employs_court_position = capellania_premier_chapelain
+			}
+			random = {
+				chance = 15
+				trigger_event = { id = capellania_court.0001 days = 10 }
+			}
+		}
+	}
+}
